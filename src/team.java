@@ -43,6 +43,10 @@ public class team extends JFrame implements ActionListener{
 			closingAction();
 		}
 		
+		if(actionCmd.equals("종료")) {
+			System.exit(0);
+		}
+		
 	}
 	public void closingAction() {
 		date.setDate(date.getDate()+1);
@@ -114,6 +118,7 @@ public class team extends JFrame implements ActionListener{
 		
 		JButton exitButton = new JButton("종료");
 		exitPanel.add(exitButton);
+		exitButton.addActionListener(this);
 		basicPanel.add(exitPanel);
 		
 		add(basicPanel,BorderLayout.NORTH);
