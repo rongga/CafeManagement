@@ -1,4 +1,6 @@
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class ware {
+public class ware extends JPanel{
 
 }

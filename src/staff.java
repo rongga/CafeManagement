@@ -1,4 +1,6 @@
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class staff {
+public class staff extends JPanel{
 
 }
