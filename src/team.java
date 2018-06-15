@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
@@ -70,17 +71,34 @@ public class team extends JFrame implements ActionListener{
 		moneyPanel.add(balanceLabel);
 		basicPanel.add(moneyPanel);
 		
+		
+		
+		
 		//selectPanel.setLayout(new FlowLayout());
-		JLabel tableLabel = new JLabel("테이블");
-		  JPanel tablePanel = new JPanel();
-		  tablePanel.add(tableLabel);
-		  selectPanel.addTab("테이블", tablePanel);
+		  JTable table = new JTable(2,3);
+		  JButton btn = new JButton("button");
+		  table.setValueAt("no.1", 0, 0);
+		  table.setValueAt("no.2", 0, 1);
+		  table.setValueAt("no.3", 0, 2);
+		  table.setValueAt("no.4", 1, 0);
+		  table.setValueAt("no.5", 1, 2);
+		  
+		  table.add(btn,1,1);
+
+		  table.setShowHorizontalLines(true);
+		  table.setShowVerticalLines(true);
+		  selectPanel.addTab("테이블", table);
 		  
 		  
-		  JLabel wareLabel = new JLabel("창고");
+		  
+		  
+		  
 		  JPanel warePanel = new JPanel();
-		  warePanel.add(wareLabel);
 		  selectPanel.addTab("창고", warePanel);
+		  
+		  
+		  
+		  
 		  
 		  
 		  JLabel memberLabel = new JLabel("회원");
@@ -89,10 +107,22 @@ public class team extends JFrame implements ActionListener{
 		  selectPanel.addTab("회원", memberPanel);
 		  
 		  
+		  
+		  
+		  
+		  
+		  
 		  JLabel menuLabel = new JLabel("메뉴");
 		  JPanel menuPanel = new JPanel();
 		  menuPanel.add(menuLabel);
 		  selectPanel.addTab("메뉴", menuPanel);
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 		  JLabel staffLabel = new JLabel("직원");
 		  JPanel staffPanel = new JPanel();

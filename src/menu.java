@@ -1,6 +1,7 @@
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class menu extends JPanel{
-
+public class menu{
+	int price;
+	int origin;
+	jaeryo[] jae = new jaeryo[100];
+	int jaecount;
 }
