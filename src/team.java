@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 public class team extends JFrame implements ActionListener{
 
@@ -12,7 +13,7 @@ public class team extends JFrame implements ActionListener{
 	
 
 	int c = 0;
-	Date date = new Date(2017,1,1);
+	Date date = new Date(2018,1,1);
 	private int revenue = 0;
 	private int balance = 0;
 	
@@ -30,8 +31,6 @@ public class team extends JFrame implements ActionListener{
 	
 	
 	JPanel exitPanel = new JPanel();
-	menu[] menuList = new menu[100];
-	int menuNum=0;
 	
 //--------------------테이블메뉴 관련 변수--------------------------
 	JPanel tableInfo = new JPanel(new GridLayout(13,2));
@@ -50,7 +49,7 @@ public class team extends JFrame implements ActionListener{
 	int[] tableMenuNum = {0,0,0,0,0,0};
 	JTextField gradeAtBill = new JTextField("회원이름",5);
 	JLabel currentTable = new JLabel("선택된 테이블");
-	//-----------------------재료관련 변수------------------------------
+//-----------------------재료관련 변수------------------------------
 	int jaeryoNum = 0;
 	String[][] jaeryoList = new String[100][4];
 	JTextField jaeryoName = new JTextField("이름",40);
@@ -97,7 +96,21 @@ public class team extends JFrame implements ActionListener{
 	JLabel editMemNum = new JLabel();
 	
 	JTable memberTable;
+//-----------------메뉴관련 변수-------------------------------------------
+	
+	String[][] menuList = new String[10][4];
+	int menuNum=0;
+	
+	JButton[] menuButton = new JButton[10];
 		
+	JDialog addmenuDialog = new JDialog();
+	JTextField addmenuName = new JTextField("메뉴 이름", 10);
+	JTextField addmenuprice = new JTextField("가격", 10);
+	JTextField addmenurecipe = new JTextField("재료 이름", 30);
+	
+	JButton goAddmenu = new JButton("메뉴추가하기");
+
+	
 //-----------------직원관련 변수-------------------------------------------
 
 	
@@ -630,8 +643,8 @@ public class team extends JFrame implements ActionListener{
 			memList[n][3] = editMile.getText();
 			memList[n][4] = editPhone.getText();
 			editMemDialog.setVisible(false);
-		}
-		if(actionCmd.equals("직원추가")) {
+			
+		}if(actionCmd.equals("직원추가")) {
 		
 			staffName.setText("이름");
 			staffGrade.setText("직급");
@@ -695,6 +708,7 @@ public class team extends JFrame implements ActionListener{
 			staffList[n][5] = editPhoneStaff.getText();
 			staffList[n][4] = editDateStaff.getText();
 			editStaffDialog.setVisible(false);
+			
 		} if (actionCmd.equals("재료추가")) {
 			
 			addjaeryoDialog.setModal(true);
@@ -744,7 +758,7 @@ public class team extends JFrame implements ActionListener{
 			
 			for(int i=0;i<jaeryoNum;i++) {
 				if (jaeryoList[i][0].equals(addjaeryoorderName.getText())) {
-					jaeryoList[i][2] = ""+(jaeryoorder);
+					jaeryoList[i][2] = jaeryoorder.getText();
 					break;
 				}
 			}
@@ -765,6 +779,40 @@ public class team extends JFrame implements ActionListener{
 				}
 			}
 			
+		} if (actionCmd.equals("메뉴추가")) {
+			
+			addmenuDialog.setModal(true);
+			addmenuDialog.setVisible(true);
+			
+		} if (actionCmd.equals("메뉴추가하기")) {
+			
+			addmenuDialog.setVisible(false);
+			
+			menuList[menuNum][0] = addmenuName.getText();
+			menuList[menuNum][1] = addmenuprice.getText();
+					
+			menuList[menuNum][3] = addmenurecipe.getText();
+			StringTokenizer recipetoken = new StringTokenizer(menuList[menuNum][4], " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			System.out.println(recipetoken);
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[menuNum][3] = Integer.toString(totalmenucost);
+			
+			menuNum++;
 		}
 		
 	}
@@ -884,7 +932,6 @@ public class team extends JFrame implements ActionListener{
 		  
 		  selectPanel.addTab("테이블",bigTable);
 //-----------------------창고-----------------------------------------------------		
-		  
 		  
 		  
 		  
@@ -1017,15 +1064,34 @@ public class team extends JFrame implements ActionListener{
 		  
 		  
 		  
-//--------------------------------------------------------------------		  
+//-------------------------메뉴----------------------------------------		  
 		  
 		  
-		  JLabel menuLabel = new JLabel("메뉴");
 		  JPanel menuPanel = new JPanel();
-		  menuPanel.add(menuLabel);
 		  selectPanel.addTab("메뉴", menuPanel);
+		  menuPanel.setLayout(new BorderLayout());
 		  
+		  JPanel menuButtonPanel = new JPanel();
+		  menuButtonPanel.setLayout(new GridLayout(5,2));
+		  menuPanel.add(menuButtonPanel,BorderLayout.CENTER);
 		  
+		  for(int i=0;i<10;i++) {
+			  menuButton[i] = new JButton("메뉴 " + (i+1));
+			  menuButtonPanel.add(menuButton[i]);
+			  menuButton[i].addActionListener(this);
+		  }
+		  
+		  JButton addmenu = new JButton("메뉴추가");
+		  menuPanel.add(addmenu,BorderLayout.SOUTH);
+		  addmenu.addActionListener(this);
+		  
+		  addmenuDialog.setLayout(new FlowLayout());
+		  addmenuDialog.setSize(500,100);
+		  addmenuDialog.add(addmenuName);
+		  addmenuDialog.add(addmenuprice);
+		  addmenuDialog.add(addmenurecipe);
+		  addmenuDialog.add(goAddmenu);
+		  goAddmenu.addActionListener(this);
 		  
 		  
 		  
