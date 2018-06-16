@@ -49,6 +49,31 @@ public class team extends JFrame implements ActionListener{
 	menu[][] tableMenuList = new menu[6][100];
 	int[] tableMenuNum = {0,0,0,0,0,0};
 	JTextField gradeAtBill = new JTextField("회원이름",5);
+	
+//-----------------재료관련 변수-------------------------------------------
+	
+	int jaeryoNum = 0;
+	String[][] jaeryoList = new String[100][4];
+	JTextField jaeryoName = new JTextField("이름",40);
+	JTextField jaeryoStock = new JTextField("재고",10);	
+	JTextField jaeryoorder = new JTextField("주문",10);
+	JTextField jaeryoprice = new JTextField("가격",20);
+	
+	JDialog addjaeryoDialog = new JDialog();
+	JButton goAddjaeryo = new JButton("재료추가하기");
+	
+	JDialog deljaeryoDialog = new JDialog();
+	JTextField deljaeryoName = new JTextField("삭제할 이름", 10);
+	JButton goDeljaeryo = new JButton("재료삭제하기");
+	
+	JDialog jaeryoorderDialog = new JDialog();
+	JTextField addjaeryoorderName = new JTextField("주문할 재료", 10);
+	JTextField addjaeryoorderNum = new JTextField("주문할 수량", 10);
+	JButton gojaeryoorder = new JButton("주문하기");
+	
+	JDialog jaeryoordercancelDialog = new JDialog();
+	JTextField deljaeryoorderName = new JTextField("취소할 재료", 10);
+	JButton gojaeryoordercancel = new JButton("주문취소하기");
 	  
 //-----------------회원관련 변수--------------------------------------
 	 //member[] memberList = new member[100];
@@ -68,7 +93,7 @@ public class team extends JFrame implements ActionListener{
 	JTextField editGrade = new JTextField(10);
 	JTextField editPhone = new JTextField(20);
 	JTextField editMile = new JTextField(5);
-		
+	
 //-----------------직원관련 변수-------------------------------------------
 
 	
@@ -531,10 +556,83 @@ public class team extends JFrame implements ActionListener{
 			revenueLabel.setText("오늘 매출: " + revenue + "원/");
 			tableTotalPrice[5].setText("빈테이블");
 			
-		}if(actionCmd.equals("회원추가")) {
+		} if (actionCmd.equals("재료추가")) {
+			
+			addjaeryoDialog.setModal(true);
+			addjaeryoDialog.setVisible(true);
+			
+		} if (actionCmd.equals("재료추가하기")) {
+			
+			addjaeryoDialog.setVisible(false);
+			jaeryoList[jaeryoNum][0] = jaeryoName.getText();
+			jaeryoList[jaeryoNum][1] = ""+0;
+			jaeryoList[jaeryoNum][2] = ""+0;
+			jaeryoList[jaeryoNum][3] = jaeryoprice.getText();
+			
+			jaeryoNum++;
+			
+		} if (actionCmd.equals("재료삭제")) {
+			
+			deljaeryoDialog.setModal(true);
+			deljaeryoDialog.setVisible(true);
+			
+		} if (actionCmd.equals("재료삭제하기") && jaeryoNum > 0) {
+			
+			deljaeryoDialog.setVisible(false);
+			
+			for(int i=0;i<jaeryoNum;i++) {
+				if (jaeryoList[i][0].equals(deljaeryoName.getText())) {
+					
+					for(int j = i;j<jaeryoNum-1;j++) {
+						for(int k=1;k<4;k++)
+							jaeryoList[j][k] = jaeryoList[j+1][k];					
+					}
+					for(int k=0;k<4;k++)
+						jaeryoList[jaeryoNum-1][k] = null;
+					jaeryoNum--;
+					break;
+				}
+			}
+			
+		} if (actionCmd.equals("주문")) {
+			
+			jaeryoorderDialog.setModal(true);
+			jaeryoorderDialog.setVisible(true);
+			
+		} if (actionCmd.equals("주문하기")) {
+			
+			jaeryoorderDialog.setVisible(false);
+			
+			for(int i=0;i<jaeryoNum;i++) {
+				if (jaeryoList[i][0].equals(addjaeryoorderName.getText())) {
+					jaeryoList[i][2] = ""+(jaeryoorder);
+					break;
+				}
+			}
+			
+		} if (actionCmd.equals("주문취소")) {
+			
+			jaeryoordercancelDialog.setModal(true);
+			jaeryoordercancelDialog.setVisible(true);
+			
+		} if (actionCmd.equals("주문취소하기")) {
+			
+			jaeryoordercancelDialog.setVisible(false);
+			
+			for(int i=0;i<jaeryoNum;i++) {
+				if (jaeryoList[i][0].equals(deljaeryoorderName.getText())) {
+					jaeryoList[i][2] = ""+0;
+					break;
+				}
+			}
+			
+		}
+		
+		if(actionCmd.equals("회원추가")) {
 			
 			addMemDialog.setModal(true);
 			addMemDialog.setVisible(true);
+			
 			
 		}if(actionCmd.equals("추가하기")) {
 			
@@ -707,15 +805,81 @@ public class team extends JFrame implements ActionListener{
 		 
 		  
 		  selectPanel.addTab("테이블",bigTable);
-//----------------------------------------------------------------------------		
 		  
-		  
+//------------------창고(재료관리)-------------------------------------------------------		
 		  
 		  
 		  JPanel warePanel = new JPanel();
 		  selectPanel.addTab("창고", warePanel);
 		  
+		  String[] wareheader = {"이름", "재고", "주문", "가격"};           //테이블 만들기
+		  JTable jaeryoTable = new JTable(jaeryoList, wareheader);
+		  jaeryoTable.getColumn("이름").setPreferredWidth(40);				//너비설정
+		  jaeryoTable.getColumn("재고").setPreferredWidth(10);
+		  jaeryoTable.getColumn("주문").setPreferredWidth(10);
+		  jaeryoTable.getColumn("가격").setPreferredWidth(20);
+		  JScrollPane jaeryoScroll = new JScrollPane(jaeryoTable);
 		  
+		  JButton addjaeryo = new JButton("재료추가");  //추가버튼
+		  addjaeryo.addActionListener(this);
+		  
+		  addjaeryoDialog.setLayout(new FlowLayout());
+		  addjaeryoDialog.setSize(500,100);
+		  addjaeryoDialog.add(jaeryoName);
+		  addjaeryoDialog.add(jaeryoprice);
+		  addjaeryoDialog.add(goAddjaeryo);
+		  
+		  goAddjaeryo.addActionListener(this);
+		  
+		  JButton deljaeryo = new JButton("재료삭제");   //삭제버튼
+		  deljaeryo.addActionListener(this);
+		 
+		  deljaeryoDialog.setLayout(new FlowLayout());
+		  deljaeryoDialog.setSize(500,100);
+		  deljaeryoDialog.add(deljaeryoName);
+		  deljaeryoDialog.add(goDeljaeryo);
+		  
+		  goDeljaeryo.addActionListener(this);
+		  
+		  JButton getorder = new JButton("주문");
+		  getorder.addActionListener(this);
+		  
+		  jaeryoorderDialog.setLayout(new FlowLayout());
+		  jaeryoorderDialog.setSize(500,100);
+		  jaeryoorderDialog.add(addjaeryoorderName);
+		  jaeryoorderDialog.add(jaeryoorder);
+		  jaeryoorderDialog.add(gojaeryoorder);
+		  
+		  gojaeryoorder.addActionListener(this);
+		  
+		  JButton cancelorder = new JButton("주문취소");
+		  cancelorder.addActionListener(this);
+		  
+		  jaeryoordercancelDialog.setLayout(new FlowLayout());
+		  jaeryoordercancelDialog.setSize(500,100);
+		  jaeryoordercancelDialog.add(deljaeryoorderName);
+		  jaeryoordercancelDialog.add(gojaeryoordercancel);
+		  gojaeryoordercancel.addActionListener(this);
+		  
+		  JPanel right = new JPanel();
+		  right.setLayout(new BorderLayout());
+		  
+		  JPanel centerPanel = new JPanel();
+		  
+		  //centerPanel.add(재료정보);
+		  centerPanel.add(getorder);
+		  centerPanel.add(cancelorder);
+		  
+		  JPanel bottomPanel = new JPanel();
+		  
+		  bottomPanel.add(addjaeryo);
+		  bottomPanel.add(deljaeryo);
+		  
+		  right.add(centerPanel, BorderLayout.CENTER);
+		  right.add(bottomPanel, BorderLayout.SOUTH);
+		  
+		  warePanel.add(jaeryoScroll);
+		  warePanel.add(right);
 		  
 		  
 //------------------회원메뉴------------------------------------		  
