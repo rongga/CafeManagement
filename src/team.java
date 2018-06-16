@@ -38,28 +38,28 @@ public class team extends JFrame implements ActionListener{
 	JPanel[] table = new JPanel[6];
 
 	JLabel[] tableItem = new JLabel[10];
-	  JLabel[] tablePrice = new JLabel[10];
-	  JLabel menuTitle = new JLabel("메뉴");
-	  JLabel priceTitle = new JLabel("가격");
+	JLabel[] tablePrice = new JLabel[10];
+	JLabel menuTitle = new JLabel("메뉴");
+	JLabel priceTitle = new JLabel("가격");
 	  
-	  JLabel[] tableTotalPrice = new JLabel[6];
-	  JLabel[] priceLabel = new JLabel[6];
-	  JButton addMenu = new JButton("추가");
-	  JButton cash = new JButton("결제");
-	  menu[][] tableMenuList = new menu[6][100];
-	  int[] tableMenuNum = {0,0,0,0,0,0};
-	 JTextField gradeAtBill = new JTextField("회원이름",5);
+	JLabel[] tableTotalPrice = new JLabel[6];
+	JLabel[] priceLabel = new JLabel[6];
+	JButton addMenu = new JButton("추가");
+	JButton cash = new JButton("결제");
+	menu[][] tableMenuList = new menu[6][100];
+	int[] tableMenuNum = {0,0,0,0,0,0};
+	JTextField gradeAtBill = new JTextField("회원이름",5);
 	  
 //-----------------회원관련 변수--------------------------------------
 	 //member[] memberList = new member[100];
-	 int memberNum = 0;
-	 String[][] memList = new String[100][5];
-	 JTextField memName = new JTextField("회원이름",10);
-		JTextField memGrade = new JTextField("회원등급",10);
-		JTextField phone = new JTextField("연락처",20);
-		JButton goAddMem = new JButton("추가하기");
+	int memberNum = 0;
+	String[][] memList = new String[100][5];
+	JTextField memName = new JTextField("회원이름",10);
+	JTextField memGrade = new JTextField("회원등급",10);
+	JTextField phone = new JTextField("연락처",20);
+	JButton goAddMem = new JButton("추가하기");
 		
-		JDialog addMemDialog = new JDialog();
+	JDialog addMemDialog = new JDialog();
 	JDialog delMemDialog = new JDialog();
 	JTextField delName = new JTextField("삭제할 이름",10);
 	JButton goDel = new JButton("삭제하기");
@@ -71,7 +71,25 @@ public class team extends JFrame implements ActionListener{
 		
 //-----------------직원관련 변수-------------------------------------------
 
-	staff[] staffList = new staff[100];
+	
+	
+	int staffNum = 0;
+	String[][] staffList = new String[100][6];
+	JTextField staffName = new JTextField("이름",10);
+	JTextField staffGrade = new JTextField("직급",10);
+	JTextField staffSal = new JTextField("급여",10);
+	JTextField staffPh = new JTextField("연락처",20);
+	JButton goAddStaff = new JButton("직원추가하기");
+		
+	JDialog addStaffDialog = new JDialog();
+	JDialog delStaffDialog = new JDialog();
+	JTextField delStaffName = new JTextField("삭제할 이름",10);
+	JButton goDelStaff= new JButton("직원삭제하기");
+	JDialog editStaffDialog = new JDialog();
+	JTextField editNameStaff = new JTextField(10);
+	JTextField editSal= new JTextField(5);
+	JTextField editPhoneStaff = new JTextField(20);
+	JTextField editGradeStaff = new JTextField(10);
 //---------------------액션리스너------------------------------------------
 	public void actionPerformed(ActionEvent e) {
 		String actionCmd = e.getActionCommand();
@@ -284,7 +302,7 @@ public class team extends JFrame implements ActionListener{
 			tableTotalPrice[4].setText(""+t);
 			
 		}if(actionCmd.equals("추가6")) {
-//			
+			
 			String s = JOptionPane.showInputDialog(null,"메뉴 추가");
 		   
 			for(int i = 0;i<menuNum;i++) {
@@ -542,7 +560,7 @@ public class team extends JFrame implements ActionListener{
 				if(memList[i][2].equals(delName.getText())){
 					
 					for(int j = i;j<memberNum-1;j++) {
-						for(int k=0;k<5;k++)
+						for(int k=1;k<5;k++)
 							memList[j][k] = memList[j+1][k];					
 					}
 					for(int k=0;k<5;k++)
@@ -552,12 +570,57 @@ public class team extends JFrame implements ActionListener{
 				}
 			}
 			
+		}if(actionCmd.equals("회원편집")){
+			
+			
+		}if(actionCmd.equals("직원추가")) {
+			
+			addStaffDialog.setModal(true);
+			addStaffDialog.setVisible(true);
+			
+		}if(actionCmd.equals("직원추가하기")) {
+			
+			addStaffDialog.setVisible(false);
+			staffList[staffNum][0] = ""+(staffNum+1);
+			staffList[staffNum][1] = staffName.getText();
+			staffList[staffNum][2] = staffSal.getText();
+			staffList[staffNum][3] = staffGrade.getText();
+			staffList[staffNum][4] = dateToString();
+			staffList[staffNum][5] = staffPh.getText();
+			
+			
+			staffNum++;
+		}if(actionCmd.equals("직원삭제") && staffNum > 0) {
+			
+			delStaffDialog.setModal(true);
+			delStaffDialog.setVisible(true);
+			
+		}if(actionCmd.equals("직원삭제하기")) {
+			
+			delStaffDialog.setVisible(false);
+			
+			for(int i = 0;i<staffNum;i++) {
+				if(staffList[i][1].equals(delStaffName.getText())){
+					
+					for(int j = i;j<staffNum-1;j++) {
+						for(int k=1;k<6;k++)
+							staffList[j][k] = staffList[j+1][k];					
+					}
+					for(int k=0;k<6;k++)
+						staffList[staffNum-1][k] = null;
+					staffNum--;
+					break;
+				}
+			}
 		}
 		
 	}
 	public void closingAction() {
 		date.setDate(date.getDate()+1);
 		dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
+	}
+	public String dateToString() {
+		return (date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
 	}
 	public team() {
 		
@@ -613,7 +676,7 @@ public class team extends JFrame implements ActionListener{
 			  JButton temp = new JButton("테이블 "+(i+1));
 			  temp.addActionListener(this);
 			  table[i].add(temp,BorderLayout.SOUTH);
-			  System.out.println(temp.getActionCommand());
+			  
 		  }
 		  
 		  for(int i=0;i<6;i++) {
@@ -662,16 +725,21 @@ public class team extends JFrame implements ActionListener{
 		  String[] header = {"번호","등급","이름","마일리지","연락처"};
 		  
 		  JTable memberTable = new JTable(memList,header);
+		  memberTable.getColumn("번호").setPreferredWidth(10);
+		  memberTable.getColumn("이름").setPreferredWidth(40);
+		  memberTable.getColumn("마일리지").setPreferredWidth(20);
+		  memberTable.getColumn("등급").setPreferredWidth(50);
+		  memberTable.getColumn("연락처").setPreferredWidth(100);
 		  JScrollPane memberScroll = new JScrollPane(memberTable);
 		  JButton editMember = new JButton("회원편집");
 		  editMember.addActionListener(this);
 		  addMemDialog.setLayout(new FlowLayout());
-			addMemDialog.setSize(500,100);
-			goAddMem.addActionListener(this);
-			addMemDialog.add(memName);
-			addMemDialog.add(memGrade);
-			addMemDialog.add(phone);
-			addMemDialog.add(goAddMem);
+		  addMemDialog.setSize(500,100);
+		  goAddMem.addActionListener(this);
+		  addMemDialog.add(memName);
+		  addMemDialog.add(memGrade);
+		  addMemDialog.add(phone);
+		  addMemDialog.add(goAddMem);
 			
 		  JButton addMember = new JButton("회원추가");
 		  addMember.addActionListener(this);
@@ -705,27 +773,54 @@ public class team extends JFrame implements ActionListener{
 		  
 		  
 		  
+//-------------------------직원---------------------------------------	  
 		  
 		  
 		  
-		  JLabel staffLabel = new JLabel("직원");
+		  
+		  
 		  JPanel staffPanel = new JPanel();
-		  staffPanel.add(staffLabel);
-		  selectPanel.addTab("직원",staffPanel);
+		  String[] headerStaff = {"번호","이름","급여","직급","입사일","연락처"};
+		  
+		  JTable staffTable = new JTable(staffList,headerStaff);
+		  staffTable.getColumn("번호").setPreferredWidth(10);
+		  staffTable.getColumn("이름").setPreferredWidth(40);
+		  staffTable.getColumn("급여").setPreferredWidth(20);
+		  staffTable.getColumn("직급").setPreferredWidth(50);
+		  staffTable.getColumn("입사일").setPreferredWidth(100);
+		  staffTable.getColumn("연락처").setPreferredWidth(100);
+		  JScrollPane staffScroll = new JScrollPane(staffTable);
+		  JButton editStaff = new JButton("직원편집");
+		  editStaff.addActionListener(this);
+		  addStaffDialog.setLayout(new FlowLayout());
+		  addStaffDialog.setSize(500,100);
+		  goAddStaff.addActionListener(this);
+		  addStaffDialog.add(staffName);
+		  addStaffDialog.add(staffGrade);
+		  addStaffDialog.add(staffPh);
+		  addStaffDialog.add(goAddStaff);
+			
+		  JButton addStaff = new JButton("직원추가");
+		  addStaff.addActionListener(this);
+		  delStaffDialog.setLayout(new FlowLayout());
+		  delStaffDialog.setSize(500,100);
+		  goDelStaff.addActionListener(this);
+		  delStaffDialog.add(delStaffName);
+		  delStaffDialog.add(goDelStaff);
+		  JButton delStaff = new JButton("직원삭제");
+		  delStaff.addActionListener(this);
+		  staffPanel.add(staffScroll);
+		  staffPanel.add(editStaff);
+		  staffPanel.add(delStaff);
+		  staffPanel.add(addStaff);
+		  
+		  
+		  selectPanel.addTab("직원", staffPanel);
 		  
 
+//-----------------------------------------------------------------------		
 		
-		
-//		JLabel tableButton = new JLabel("테이블");
-//		JLabel wareButton = new JLabel("창고");
-//		JLabel memberButton = new JLabel("회원");
-//		JLabel menuButton = new JLabel("메뉴");
-//		JLabel staffButton = new JLabel("직원");
-//		selectPanel.addTab("1",tableButton);
-//		selectPanel.addTab("2",wareButton);
-//		selectPanel.addTab("3",memberButton);
-//		selectPanel.addTab("4",menuButton);
-//		selectPanel.addTab("5",staffButton);
+
 		
 		basicPanel.add(selectPanel,BorderLayout.SOUTH);
 
@@ -733,7 +828,7 @@ public class team extends JFrame implements ActionListener{
 		JButton exitButton = new JButton("종료");
 		exitPanel.add(exitButton);
 		exitButton.addActionListener(this);
-		//basicPanel.add(exitPanel);
+		basicPanel.add(exitPanel);
 		
 		add(basicPanel);
 	}
