@@ -34,7 +34,7 @@ public class team extends JFrame implements ActionListener{
 	int menuNum=0;
 	
 //--------------------테이블메뉴 관련 변수--------------------------
-	JPanel tableInfo = new JPanel(new GridLayout(12,2));
+	JPanel tableInfo = new JPanel(new GridLayout(13,2));
 	JPanel[] table = new JPanel[6];
 
 	JLabel[] tableItem = new JLabel[10];
@@ -49,9 +49,8 @@ public class team extends JFrame implements ActionListener{
 	menu[][] tableMenuList = new menu[6][100];
 	int[] tableMenuNum = {0,0,0,0,0,0};
 	JTextField gradeAtBill = new JTextField("회원이름",5);
-	
-//-----------------재료관련 변수-------------------------------------------
-	
+	JLabel currentTable = new JLabel("선택된 테이블");
+	//-----------------------재료관련 변수------------------------------
 	int jaeryoNum = 0;
 	String[][] jaeryoList = new String[100][4];
 	JTextField jaeryoName = new JTextField("이름",40);
@@ -86,14 +85,19 @@ public class team extends JFrame implements ActionListener{
 		
 	JDialog addMemDialog = new JDialog();
 	JDialog delMemDialog = new JDialog();
+	JDialog editMemDialog = new JDialog();
+	
 	JTextField delName = new JTextField("삭제할 이름",10);
 	JButton goDel = new JButton("삭제하기");
-	JDialog editMemDialog = new JDialog();
-	JTextField editName = new JTextField(10);
-	JTextField editGrade = new JTextField(10);
-	JTextField editPhone = new JTextField(20);
-	JTextField editMile = new JTextField(5);
 	
+	JTextField editName = new JTextField("이름",10);
+	JTextField editGrade = new JTextField("등급",10);
+	JTextField editPhone = new JTextField("연락처",20);
+	JTextField editMile = new JTextField("마일리지",5);
+	JLabel editMemNum = new JLabel();
+	
+	JTable memberTable;
+		
 //-----------------직원관련 변수-------------------------------------------
 
 	
@@ -108,13 +112,17 @@ public class team extends JFrame implements ActionListener{
 		
 	JDialog addStaffDialog = new JDialog();
 	JDialog delStaffDialog = new JDialog();
+	JDialog editStaffDialog = new JDialog();
+	
 	JTextField delStaffName = new JTextField("삭제할 이름",10);
 	JButton goDelStaff= new JButton("직원삭제하기");
-	JDialog editStaffDialog = new JDialog();
 	JTextField editNameStaff = new JTextField(10);
 	JTextField editSal= new JTextField(5);
 	JTextField editPhoneStaff = new JTextField(20);
 	JTextField editGradeStaff = new JTextField(10);
+	JTextField editDateStaff = new JTextField(30);
+	JLabel editStaffNum = new JLabel();
+	JTable staffTable;
 //---------------------액션리스너------------------------------------------
 	public void actionPerformed(ActionEvent e) {
 		String actionCmd = e.getActionCommand();
@@ -132,6 +140,7 @@ public class team extends JFrame implements ActionListener{
 		}
 		if(actionCmd.equals("테이블 1")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -148,6 +157,7 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("테이블 2")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -164,6 +174,7 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("테이블 3")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -180,6 +191,7 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("테이블 4")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -196,6 +208,7 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("테이블 5")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -212,6 +225,7 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("테이블 6")) {
 			
+			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
 				 tableItem[i].setText("");
 				 tablePrice[i].setText("");
@@ -394,8 +408,8 @@ public class team extends JFrame implements ActionListener{
 			gradeAtBill.setText("회원이름");
 			
 			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) 
-				tp += tableMenuList[0][i].price;
+			for(int i=0;i<tableMenuNum[1];i++) 
+				tp += tableMenuList[1][i].price;
 			
 			for(int i=0;i<memberNum;i++) {
 				if(s.equals(memList[i][2])) {
@@ -428,8 +442,8 @@ public class team extends JFrame implements ActionListener{
 			gradeAtBill.setText("회원이름");
 			
 			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) 
-				tp += tableMenuList[0][i].price;
+			for(int i=0;i<tableMenuNum[2];i++) 
+				tp += tableMenuList[2][i].price;
 			
 			for(int i=0;i<memberNum;i++) {
 				if(s.equals(memList[i][2])) {
@@ -462,8 +476,8 @@ public class team extends JFrame implements ActionListener{
 			gradeAtBill.setText("회원이름");
 			
 			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) 
-				tp += tableMenuList[0][i].price;
+			for(int i=0;i<tableMenuNum[3];i++) 
+				tp += tableMenuList[3][i].price;
 			
 			for(int i=0;i<memberNum;i++) {
 				if(s.equals(memList[i][2])) {
@@ -496,8 +510,8 @@ public class team extends JFrame implements ActionListener{
 			gradeAtBill.setText("회원이름");
 			
 			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) 
-				tp += tableMenuList[0][i].price;
+			for(int i=0;i<tableMenuNum[4];i++) 
+				tp += tableMenuList[4][i].price;
 			
 			for(int i=0;i<memberNum;i++) {
 				if(s.equals(memList[i][2])) {
@@ -529,8 +543,8 @@ public class team extends JFrame implements ActionListener{
 			String s = gradeAtBill.getText();
 			gradeAtBill.setText("회원이름");
 			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) {
-				tp += tableMenuList[0][i].price;
+			for(int i=0;i<tableMenuNum[5];i++) {
+				tp += tableMenuList[5][i].price;
 			}
 			for(int i=0;i<memberNum;i++) {
 				if(s.equals(memList[i][2])) {
@@ -556,6 +570,131 @@ public class team extends JFrame implements ActionListener{
 			revenueLabel.setText("오늘 매출: " + revenue + "원/");
 			tableTotalPrice[5].setText("빈테이블");
 			
+		}if(actionCmd.equals("회원추가")) {
+			
+			memName.setText("회원이름");
+			memGrade.setText("회원등급");
+			phone.setText("연락처");
+			addMemDialog.setModal(true);
+			addMemDialog.setVisible(true);
+			
+		}if(actionCmd.equals("추가하기")) {
+			
+			addMemDialog.setVisible(false);
+			memList[memberNum][0] = ""+(memberNum+1);
+			memList[memberNum][1] = memGrade.getText();
+			memList[memberNum][2] = memName.getText();
+			memList[memberNum][3] = ""+0;
+			memList[memberNum][4] = phone.getText();
+			
+			memberNum++;
+			
+		}if(actionCmd.equals("회원삭제") && memberNum > 0) {
+			
+			delMemDialog.setModal(true);
+			delMemDialog.setVisible(true);
+			
+		}if(actionCmd.equals("삭제하기")) {
+			
+			delMemDialog.setVisible(false);
+			
+			for(int i = 0;i<memberNum;i++) {
+				if(memList[i][2].equals(delName.getText())){
+					
+					for(int j = i;j<memberNum-1;j++) {
+						for(int k=1;k<5;k++)
+							memList[j][k] = memList[j+1][k];					
+					}
+					for(int k=0;k<5;k++)
+						memList[memberNum-1][k] = null;
+					memberNum--;
+					break;
+				}
+			}
+			
+		}if(actionCmd.equals("회원편집")){
+			
+			editMemNum.setText(memList[memberTable.getSelectedRow()][0]);
+			editName.setText(memList[memberTable.getSelectedRow()][2]);
+			editGrade.setText(memList[memberTable.getSelectedRow()][1]);
+			editMile.setText(memList[memberTable.getSelectedRow()][3]);
+			editPhone.setText(memList[memberTable.getSelectedRow()][4]);
+			editMemDialog.setModal(true);
+			editMemDialog.setVisible(true);
+			
+		}if(actionCmd.equals("회원편집하기")) {
+			
+			int n = Integer.parseInt(editMemNum.getText()) - 1;
+			memList[n][1] = editGrade.getText();
+			memList[n][2] = editName.getText();
+			memList[n][3] = editMile.getText();
+			memList[n][4] = editPhone.getText();
+			editMemDialog.setVisible(false);
+		}
+		if(actionCmd.equals("직원추가")) {
+		
+			staffName.setText("이름");
+			staffGrade.setText("직급");
+			staffPh.setText("연락처");
+			staffSal.setText("급여");
+			addStaffDialog.setModal(true);
+			addStaffDialog.setVisible(true);
+			
+		}if(actionCmd.equals("직원추가하기")) {
+			
+			addStaffDialog.setVisible(false);
+			staffList[staffNum][0] = ""+(staffNum+1);
+			staffList[staffNum][1] = staffName.getText();
+			staffList[staffNum][2] = staffSal.getText();
+			staffList[staffNum][3] = staffGrade.getText();
+			staffList[staffNum][4] = dateToString();
+			staffList[staffNum][5] = staffPh.getText();
+			
+			
+			staffNum++;
+		}if(actionCmd.equals("직원삭제") && staffNum > 0) {
+		
+			delName.setText("삭제할 이름");
+			delStaffDialog.setModal(true);
+			delStaffDialog.setVisible(true);
+			
+		}if(actionCmd.equals("직원삭제하기")) {
+			
+			delStaffDialog.setVisible(false);
+			
+			for(int i = 0;i<staffNum;i++) {
+				if(staffList[i][1].equals(delStaffName.getText())){
+					
+					for(int j = i;j<staffNum-1;j++) {
+						for(int k=1;k<6;k++)
+							staffList[j][k] = staffList[j+1][k];					
+					}
+					for(int k=0;k<6;k++)
+						staffList[staffNum-1][k] = null;
+					staffNum--;
+					break;
+				}
+			}
+		}if(actionCmd.equals("직원편집")) {
+			
+			editStaffNum.setText(staffList[staffTable.getSelectedRow()][0]);
+			editNameStaff.setText(staffList[staffTable.getSelectedRow()][1]);
+			editGradeStaff.setText(staffList[staffTable.getSelectedRow()][3]);
+			editSal.setText(staffList[staffTable.getSelectedRow()][2]);
+			editDateStaff.setText(staffList[staffTable.getSelectedRow()][4]);
+			editPhoneStaff.setText(staffList[staffTable.getSelectedRow()][5]);
+			editStaffDialog.setModal(true);
+			editStaffDialog.setVisible(true);
+			
+		}if(actionCmd.equals("직원편집하기")) {
+			
+			int n = Integer.parseInt(editStaffNum.getText()) - 1;
+			staffList[n][3] = editGradeStaff.getText();
+			staffList[n][1] = editNameStaff.getText();
+			staffList[n][2] = editSal.getText();
+			staffList[n][5] = editPhoneStaff.getText();
+			staffList[n][4] = editDateStaff.getText();
+			editStaffDialog.setVisible(false);
 		} if (actionCmd.equals("재료추가")) {
 			
 			addjaeryoDialog.setModal(true);
@@ -628,94 +767,31 @@ public class team extends JFrame implements ActionListener{
 			
 		}
 		
-		if(actionCmd.equals("회원추가")) {
-			
-			addMemDialog.setModal(true);
-			addMemDialog.setVisible(true);
-			
-			
-		}if(actionCmd.equals("추가하기")) {
-			
-			addMemDialog.setVisible(false);
-			memList[memberNum][0] = ""+(memberNum+1);
-			memList[memberNum][1] = memGrade.getText();
-			memList[memberNum][2] = memName.getText();
-			memList[memberNum][3] = ""+0;
-			memList[memberNum][4] = phone.getText();
-			
-			memberNum++;
-			
-		}if(actionCmd.equals("회원삭제") && memberNum > 0) {
-			
-			delMemDialog.setModal(true);
-			delMemDialog.setVisible(true);
-			
-		}if(actionCmd.equals("삭제하기")) {
-			
-			delMemDialog.setVisible(false);
-			
-			for(int i = 0;i<memberNum;i++) {
-				if(memList[i][2].equals(delName.getText())){
-					
-					for(int j = i;j<memberNum-1;j++) {
-						for(int k=1;k<5;k++)
-							memList[j][k] = memList[j+1][k];					
-					}
-					for(int k=0;k<5;k++)
-						memList[memberNum-1][k] = null;
-					memberNum--;
-					break;
-				}
-			}
-			
-		}if(actionCmd.equals("회원편집")){
-			
-			
-		}if(actionCmd.equals("직원추가")) {
-			
-			addStaffDialog.setModal(true);
-			addStaffDialog.setVisible(true);
-			
-		}if(actionCmd.equals("직원추가하기")) {
-			
-			addStaffDialog.setVisible(false);
-			staffList[staffNum][0] = ""+(staffNum+1);
-			staffList[staffNum][1] = staffName.getText();
-			staffList[staffNum][2] = staffSal.getText();
-			staffList[staffNum][3] = staffGrade.getText();
-			staffList[staffNum][4] = dateToString();
-			staffList[staffNum][5] = staffPh.getText();
-			
-			
-			staffNum++;
-		}if(actionCmd.equals("직원삭제") && staffNum > 0) {
-			
-			delStaffDialog.setModal(true);
-			delStaffDialog.setVisible(true);
-			
-		}if(actionCmd.equals("직원삭제하기")) {
-			
-			delStaffDialog.setVisible(false);
-			
-			for(int i = 0;i<staffNum;i++) {
-				if(staffList[i][1].equals(delStaffName.getText())){
-					
-					for(int j = i;j<staffNum-1;j++) {
-						for(int k=1;k<6;k++)
-							staffList[j][k] = staffList[j+1][k];					
-					}
-					for(int k=0;k<6;k++)
-						staffList[staffNum-1][k] = null;
-					staffNum--;
-					break;
-				}
-			}
-		}
-		
 	}
 	public void closingAction() {
+		
+		boolean okay = true;
+		for(int i=0;i<6;i++) {
+			if(!tableTotalPrice[i].getText().equals("빈테이블")) {
+				JOptionPane.showMessageDialog(this,"마감되지 않은 테이블이 있습니다.");
+				return;
+			}
+		}
 		date.setDate(date.getDate()+1);
 		dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
+		
+		balance += revenue;
+		revenue = 0;
+		if(date.getDate() == 1) {
+			int totalSal = 0;
+			for(int i=0;i<staffNum;i++) {
+				totalSal += Integer.parseInt(staffList[i][2]);
+			}
+			balance -= totalSal;
+		}
+		revenueLabel.setText("오늘 매출: " + revenue + "원/");
+		balanceLabel.setText("전체 잔고: " + balance + "원");
+		
 	}
 	public String dateToString() {
 		return (date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
@@ -795,8 +871,10 @@ public class team extends JFrame implements ActionListener{
 			  tableInfo.add(tablePrice[i]);
 			  
 		  }
+		  
 		 tableInfo.add(addMenu);
 		 tableInfo.add(cash);
+		 tableInfo.add(currentTable);
 		 tableInfo.add(gradeAtBill);
 		  
 		  
@@ -805,13 +883,13 @@ public class team extends JFrame implements ActionListener{
 		 
 		  
 		  selectPanel.addTab("테이블",bigTable);
+//-----------------------창고-----------------------------------------------------		
 		  
-//------------------창고(재료관리)-------------------------------------------------------		
+		  
 		  
 		  
 		  JPanel warePanel = new JPanel();
 		  selectPanel.addTab("창고", warePanel);
-		  
 		  String[] wareheader = {"이름", "재고", "주문", "가격"};           //테이블 만들기
 		  JTable jaeryoTable = new JTable(jaeryoList, wareheader);
 		  jaeryoTable.getColumn("이름").setPreferredWidth(40);				//너비설정
@@ -882,13 +960,14 @@ public class team extends JFrame implements ActionListener{
 		  warePanel.add(right);
 		  
 		  
+		  
 //------------------회원메뉴------------------------------------		  
 		  
 		  
 		  JPanel memberPanel = new JPanel();
 		  String[] header = {"번호","등급","이름","마일리지","연락처"};
 		  
-		  JTable memberTable = new JTable(memList,header);
+		  memberTable = new JTable(memList,header);
 		  memberTable.getColumn("번호").setPreferredWidth(10);
 		  memberTable.getColumn("이름").setPreferredWidth(40);
 		  memberTable.getColumn("마일리지").setPreferredWidth(20);
@@ -898,12 +977,14 @@ public class team extends JFrame implements ActionListener{
 		  JButton editMember = new JButton("회원편집");
 		  editMember.addActionListener(this);
 		  addMemDialog.setLayout(new FlowLayout());
-		  addMemDialog.setSize(500,100);
+		  addMemDialog.setSize(700,100);
 		  goAddMem.addActionListener(this);
 		  addMemDialog.add(memName);
 		  addMemDialog.add(memGrade);
 		  addMemDialog.add(phone);
 		  addMemDialog.add(goAddMem);
+		  
+		 
 			
 		  JButton addMember = new JButton("회원추가");
 		  addMember.addActionListener(this);
@@ -918,6 +999,17 @@ public class team extends JFrame implements ActionListener{
 		  memberPanel.add(editMember);
 		  memberPanel.add(delMember);
 		  memberPanel.add(addMember);
+		  
+		  JButton goEditMem = new JButton("회원편집하기");
+		  goEditMem.addActionListener(this);
+		  editMemDialog.setSize(800,100);
+		  editMemDialog.setLayout(new FlowLayout());
+		  editMemDialog.add(editMemNum);
+		  editMemDialog.add(editName);
+		  editMemDialog.add(editGrade);
+		  editMemDialog.add(editPhone);
+		  editMemDialog.add(editMile);
+		  editMemDialog.add(goEditMem);
 		  
 		  
 		  selectPanel.addTab("회원", memberPanel);
@@ -946,7 +1038,7 @@ public class team extends JFrame implements ActionListener{
 		  JPanel staffPanel = new JPanel();
 		  String[] headerStaff = {"번호","이름","급여","직급","입사일","연락처"};
 		  
-		  JTable staffTable = new JTable(staffList,headerStaff);
+		  staffTable = new JTable(staffList,headerStaff);
 		  staffTable.getColumn("번호").setPreferredWidth(10);
 		  staffTable.getColumn("이름").setPreferredWidth(40);
 		  staffTable.getColumn("급여").setPreferredWidth(20);
@@ -957,12 +1049,15 @@ public class team extends JFrame implements ActionListener{
 		  JButton editStaff = new JButton("직원편집");
 		  editStaff.addActionListener(this);
 		  addStaffDialog.setLayout(new FlowLayout());
-		  addStaffDialog.setSize(500,100);
+		  addStaffDialog.setSize(800,100);
 		  goAddStaff.addActionListener(this);
 		  addStaffDialog.add(staffName);
 		  addStaffDialog.add(staffGrade);
 		  addStaffDialog.add(staffPh);
+		  addStaffDialog.add(staffSal);
 		  addStaffDialog.add(goAddStaff);
+		  
+		  
 			
 		  JButton addStaff = new JButton("직원추가");
 		  addStaff.addActionListener(this);
@@ -978,6 +1073,17 @@ public class team extends JFrame implements ActionListener{
 		  staffPanel.add(delStaff);
 		  staffPanel.add(addStaff);
 		  
+		  JButton goEditStaff = new JButton("직원편집하기");
+		  goEditStaff.addActionListener(this);
+		  editStaffDialog.setSize(900,100);
+		  editStaffDialog.setLayout(new FlowLayout());
+		  editStaffDialog.add(editStaffNum);
+		  editStaffDialog.add(editNameStaff);
+		  editStaffDialog.add(editGradeStaff);
+		  editStaffDialog.add(editPhoneStaff);
+		  editStaffDialog.add(editSal);
+		  editStaffDialog.add(editDateStaff);
+		  editStaffDialog.add(goEditStaff);
 		  
 		  selectPanel.addTab("직원", staffPanel);
 		  
