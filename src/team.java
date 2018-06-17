@@ -1079,29 +1079,29 @@ public class team extends JFrame implements ActionListener{
 			
 			menuDialog[0].setVisible(false);
 			
-//			menuList[0] = new menu(menunametext[0].getText(),
-//					Integer.parseInt(menupricetext[0].getText()), menujaetext[0].getText());
-//			
-//			menuButton[0].setText(menunametext[0].getText());
-//			
-//			String totalrecipe = menujaetext[0].getText();
-//			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
-//			
-//			int recipecount = recipetoken.countTokens();
-//			
-//			int totalmenucost = 0;
-//			
-//			for(int i=0;i<recipecount;i++) {
-//				String smalljae = recipetoken.nextToken();
-//				for(int j=0;j<jaeryoNum;j++) {
-//					if (smalljae.equals(jaeryoList[j][0])) {
-//						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
-//						break;
-//					}
-//				}
-//			}
+			menuList[0] = new menu(menunametext[0].getText(),
+					Integer.parseInt(menupricetext[0].getText()), menujaetext[0].getText());
 			
-			//menuList[0].setOrigin(totalmenucost);
+			menuButton[0].setText(menunametext[0].getText());
+			
+			String totalrecipe = menujaetext[0].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[0].setOrigin(totalmenucost);
 			
 		} if (actionCmd.equals("편집 2")) {
 			
@@ -1359,31 +1359,121 @@ public class team extends JFrame implements ActionListener{
 			
 			menuDialog[0].setVisible(false);
 			
-			for(int i=0;i<menuNum;i++) {
-				menuList[i-1] = menuList[i];
-				menuButton[i-1].setText(menuList[i-1].name);
+			for(int i=0;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
 			}
 			
 			menuNum--;
-			menuButton[menuNum].setText("메뉴 " + menuNum);
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
 			
 		} if (actionCmd.equals("삭제 2")) {
 			
+			menuDialog[1].setVisible(false);
+			
+			for(int i=1;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
+			
 		} if (actionCmd.equals("삭제 3")) {
 			
+			menuDialog[2].setVisible(false);
+			
+			for(int i=2;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
+		
 		} if (actionCmd.equals("삭제 4")) {
+			
+			menuDialog[3].setVisible(false);
+			
+			for(int i=3;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
 			
 		} if (actionCmd.equals("삭제 5")) {
 			
+			menuDialog[4].setVisible(false);
+			
+			for(int i=4;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
+			
 		} if (actionCmd.equals("삭제 6")) {
+			
+			menuDialog[5].setVisible(false);
+			
+			for(int i=5;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
 			
 		} if (actionCmd.equals("삭제 7")) {
 			
+			menuDialog[6].setVisible(false);
+			
+			for(int i=6;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
+			
 		} if (actionCmd.equals("삭제 8")) {
+			
+			menuDialog[7].setVisible(false);
+			
+			for(int i=7;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
 			
 		} if (actionCmd.equals("삭제 9")) {
 			
+			menuDialog[8].setVisible(false);
+			
+			for(int i=8;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
+			
 		} if (actionCmd.equals("삭제 10")) {
+			
+			menuDialog[9].setVisible(false);
+			
+			for(int i=9;i<menuNum-1;i++) {
+				menuList[i] = menuList[i+1];
+				menuButton[i].setText(menuList[i+1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + (menuNum+1));
 			
 		}
 		
@@ -1646,6 +1736,7 @@ public class team extends JFrame implements ActionListener{
 //-------------------------메뉴----------------------------------------		  
 		  
 		  
+		  
 		  JPanel menuPanel = new JPanel();
 		  selectPanel.addTab("메뉴", menuPanel);
 		  menuPanel.setLayout(new BorderLayout());
@@ -1655,6 +1746,7 @@ public class team extends JFrame implements ActionListener{
 		  menuPanel.add(menuButtonPanel,BorderLayout.CENTER);
 		  
 		  for(int i=0;i<10;i++) {
+			  menuList[i] = new menu();
 			  menuButton[i] = new JButton("메뉴 " + (i+1));
 			  menuButtonPanel.add(menuButton[i]);
 			  menuButton[i].addActionListener(this);
