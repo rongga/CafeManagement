@@ -1,3 +1,5 @@
+import java.util.StringTokenizer;
+
 public class menu{
 	String name;
 	int price;
@@ -15,6 +17,12 @@ public class menu{
 		price = p;
 		jae = null;
 		origin = 0;
+	}
+	
+	public menu(String name, int price, String jae) {
+		this.name = name;
+		this.price = price;
+		this.jae = jae;
 	}
 	
 	public void setName(String name) {

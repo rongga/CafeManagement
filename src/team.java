@@ -111,8 +111,14 @@ public class team extends JFrame implements ActionListener{
 	JButton goAddmenu = new JButton("메뉴추가하기");
 	
 	JDialog[] menuDialog = new JDialog[10];
+	JTextField[] menunametext = new JTextField[10];
+	JLabel[] menuprice = new JLabel[10];
+	JTextField[] menupricetext = new JTextField[10];
+	JLabel[] menuorigin = new JLabel[10];
+	JTextField[] menujaetext = new JTextField[10];
 	
 	JButton delmenuButton[] = new JButton[10];
+	JButton changemenuButton[] = new JButton[10];
 
 	
 //-----------------직원관련 변수-------------------------------------------
@@ -943,18 +949,15 @@ public class team extends JFrame implements ActionListener{
 			
 			addmenuDialog.setVisible(false);
 			
-			menuList[menuNum] = new menu();
+			menuList[menuNum] = new menu(addmenuName.getText(),
+					Integer.parseInt(addmenuprice.getText()), addmenurecipe.getText());
 			
-			menuList[menuNum].setName(addmenuName.getText());
-			menuList[menuNum].setPrice(Integer.parseInt(addmenuprice.getText()));
+			menuButton[menuNum].setText(addmenuName.getText());
 			
 			String totalrecipe = addmenurecipe.getText();
-			menuList[menuNum].setjae(totalrecipe);
 			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
 			
 			int recipecount = recipetoken.countTokens();
-			
-			System.out.println(totalrecipe);
 			
 			int totalmenucost = 0;
 			
@@ -971,57 +974,398 @@ public class team extends JFrame implements ActionListener{
 			menuList[menuNum].setOrigin(totalmenucost);
 			
 			menuNum++;
-		} if (actionCmd.equals("메뉴 1")) {
+			
+		} if (actionCmd.equals(menuList[0].name)) {
+			
+			menunametext[0].setText(menuList[0].name);
+			menupricetext[0].setText(Integer.toString(menuList[0].price));
+			menuorigin[0].setText("원가 : " + Integer.toString(menuList[0].origin));
+			menujaetext[0].setText(menuList[0].jae);
 			
 			menuDialog[0].setModal(true);
 			menuDialog[0].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 2")) {
+		} if (actionCmd.equals(menuList[1].name)) {
+			
+			menunametext[1].setText(menuList[1].name);
+			menupricetext[1].setText(Integer.toString(menuList[1].price));
+			menuorigin[1].setText("원가 : " + Integer.toString(menuList[1].origin));
+			menujaetext[1].setText(menuList[1].jae);
 			
 			menuDialog[1].setModal(true);
 			menuDialog[1].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 3")) {
+		} if (actionCmd.equals(menuList[2].name)) {
+			
+			menunametext[2].setText(menuList[2].name);
+			menupricetext[2].setText(Integer.toString(menuList[2].price));
+			menuorigin[2].setText("원가 : " + Integer.toString(menuList[2].origin));
+			menujaetext[2].setText(menuList[2].jae);
 			
 			menuDialog[2].setModal(true);
 			menuDialog[2].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 4")) {
+		} if (actionCmd.equals(menuList[3].name)) {
+			
+			menunametext[3].setText(menuList[3].name);
+			menupricetext[3].setText(Integer.toString(menuList[3].price));
+			menuorigin[3].setText("원가 : " + Integer.toString(menuList[3].origin));
+			menujaetext[3].setText(menuList[3].jae);
 			
 			menuDialog[3].setModal(true);
 			menuDialog[3].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 5")) {
+		} if (actionCmd.equals(menuList[4].name)) {
+			
+			menunametext[4].setText(menuList[4].name);
+			menupricetext[4].setText(Integer.toString(menuList[4].price));
+			menuorigin[4].setText("원가 : " + Integer.toString(menuList[4].origin));
+			menujaetext[4].setText(menuList[4].jae);
 			
 			menuDialog[4].setModal(true);
 			menuDialog[4].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 6")) {
+		} if (actionCmd.equals(menuList[5].name)) {
+			
+			menunametext[5].setText(menuList[5].name);
+			menupricetext[5].setText(Integer.toString(menuList[5].price));
+			menuorigin[5].setText("원가 : " + Integer.toString(menuList[5].origin));
+			menujaetext[5].setText(menuList[5].jae);
 			
 			menuDialog[5].setModal(true);
 			menuDialog[5].setVisible(true);
 		
-		} if (actionCmd.equals("메뉴 7")) {
+		} if (actionCmd.equals(menuList[6].name)) {
+			
+			menunametext[6].setText(menuList[6].name);
+			menupricetext[6].setText(Integer.toString(menuList[6].price));
+			menuorigin[6].setText("원가 : " + Integer.toString(menuList[6].origin));
+			menujaetext[6].setText(menuList[6].jae);
 			
 			menuDialog[6].setModal(true);
 			menuDialog[6].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 8")) {
+		} if (actionCmd.equals(menuList[7].name)) {
+			
+			menunametext[7].setText(menuList[7].name);
+			menupricetext[7].setText(Integer.toString(menuList[7].price));
+			menuorigin[7].setText("원가 : " + Integer.toString(menuList[7].origin));
+			menujaetext[7].setText(menuList[7].jae);
 			
 			menuDialog[7].setModal(true);
 			menuDialog[7].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 9")) {
+		} if (actionCmd.equals(menuList[8].name)) {
+			
+			menunametext[8].setText(menuList[8].name);
+			menupricetext[8].setText(Integer.toString(menuList[8].price));
+			menuorigin[8].setText("원가 : " + Integer.toString(menuList[8].origin));
+			menujaetext[8].setText(menuList[8].jae);
 			
 			menuDialog[8].setModal(true);
 			menuDialog[8].setVisible(true);
 			
-		} if (actionCmd.equals("메뉴 10")) {
+		} if (actionCmd.equals(menuList[9].name)) {
+			
+			menunametext[9].setText(menuList[9].name);
+			menupricetext[9].setText(Integer.toString(menuList[9].price));
+			menuorigin[9].setText("원가 : " + Integer.toString(menuList[9].origin));
+			menujaetext[9].setText(menuList[9].jae);
 			
 			menuDialog[9].setModal(true);
 			menuDialog[9].setVisible(true);
 			
+		} if (actionCmd.equals("편집 1")) {
+			
+			menuDialog[0].setVisible(false);
+			
+//			menuList[0] = new menu(menunametext[0].getText(),
+//					Integer.parseInt(menupricetext[0].getText()), menujaetext[0].getText());
+//			
+//			menuButton[0].setText(menunametext[0].getText());
+//			
+//			String totalrecipe = menujaetext[0].getText();
+//			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+//			
+//			int recipecount = recipetoken.countTokens();
+//			
+//			int totalmenucost = 0;
+//			
+//			for(int i=0;i<recipecount;i++) {
+//				String smalljae = recipetoken.nextToken();
+//				for(int j=0;j<jaeryoNum;j++) {
+//					if (smalljae.equals(jaeryoList[j][0])) {
+//						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+//						break;
+//					}
+//				}
+//			}
+			
+			//menuList[0].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 2")) {
+			
+			menuDialog[1].setVisible(false);
+			
+			menuList[1] = new menu(menunametext[1].getText(),
+					Integer.parseInt(menupricetext[1].getText()), menujaetext[1].getText());
+			
+			menuButton[1].setText(menunametext[1].getText());
+			
+			String totalrecipe = menujaetext[1].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=1;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=1;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[1].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 3")) {
+			
+			menuDialog[2].setVisible(false);
+			
+			menuList[2] = new menu(menunametext[2].getText(),
+					Integer.parseInt(menupricetext[2].getText()), menujaetext[2].getText());
+			
+			menuButton[2].setText(menunametext[2].getText());
+			
+			String totalrecipe = menujaetext[2].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[2].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 4")) {
+			
+			menuDialog[3].setVisible(false);
+			
+			menuList[3] = new menu(menunametext[3].getText(),
+					Integer.parseInt(menupricetext[3].getText()), menujaetext[3].getText());
+			
+			menuButton[3].setText(menunametext[3].getText());
+			
+			String totalrecipe = menujaetext[3].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[3].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 5")) {
+			
+			menuDialog[4].setVisible(false);
+			
+			menuList[4] = new menu(menunametext[4].getText(),
+					Integer.parseInt(menupricetext[4].getText()), menujaetext[4].getText());
+			
+			menuButton[4].setText(menunametext[4].getText());
+			
+			String totalrecipe = menujaetext[4].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[4].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 6")) {
+			
+			menuDialog[5].setVisible(false);
+			
+			menuList[5] = new menu(menunametext[5].getText(),
+					Integer.parseInt(menupricetext[5].getText()), menujaetext[5].getText());
+			
+			menuButton[5].setText(menunametext[5].getText());
+			
+			String totalrecipe = menujaetext[5].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[5].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 7")) {
+			
+			menuDialog[6].setVisible(false);
+			
+			menuList[6] = new menu(menunametext[6].getText(),
+					Integer.parseInt(menupricetext[6].getText()), menujaetext[6].getText());
+			
+			menuButton[6].setText(menunametext[6].getText());
+			
+			String totalrecipe = menujaetext[6].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[6].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 8")) {
+			
+			menuDialog[7].setVisible(false);
+			
+			menuList[7] = new menu(menunametext[7].getText(),
+					Integer.parseInt(menupricetext[7].getText()), menujaetext[7].getText());
+			
+			menuButton[7].setText(menunametext[7].getText());
+			
+			String totalrecipe = menujaetext[7].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[7].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 9")) {
+			
+			menuDialog[8].setVisible(false);
+			
+			menuList[8] = new menu(menunametext[8].getText(),
+					Integer.parseInt(menupricetext[8].getText()), menujaetext[8].getText());
+			
+			menuButton[8].setText(menunametext[8].getText());
+			
+			String totalrecipe = menujaetext[8].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[8].setOrigin(totalmenucost);
+			
+		} if (actionCmd.equals("편집 10")) {
+			
+			menuDialog[9].setVisible(false);
+			
+			menuList[9] = new menu(menunametext[9].getText(),
+					Integer.parseInt(menupricetext[9].getText()), menujaetext[9].getText());
+			
+			menuButton[9].setText(menunametext[9].getText());
+			
+			String totalrecipe = menujaetext[9].getText();
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+			
+			int recipecount = recipetoken.countTokens();
+			
+			int totalmenucost = 0;
+			
+			for(int i=0;i<recipecount;i++) {
+				String smalljae = recipetoken.nextToken();
+				for(int j=0;j<jaeryoNum;j++) {
+					if (smalljae.equals(jaeryoList[j][0])) {
+						totalmenucost += Integer.parseInt(jaeryoList[j][3]);
+						break;
+					}
+				}
+			}
+			
+			menuList[9].setOrigin(totalmenucost);
+			
 		} if (actionCmd.equals("삭제 1")) {
+			
+			menuDialog[0].setVisible(false);
+			
+			for(int i=0;i<menuNum;i++) {
+				menuList[i-1] = menuList[i];
+				menuButton[i-1].setText(menuList[i-1].name);
+			}
+			
+			menuNum--;
+			menuButton[menuNum].setText("메뉴 " + menuNum);
 			
 		} if (actionCmd.equals("삭제 2")) {
 			
@@ -1084,10 +1428,10 @@ public class team extends JFrame implements ActionListener{
 		setSize(WIDTH,HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-		menuList[0] = new menu("menu 1",1000);
-		menuList[1] = new menu("menu 2",2000);
-		menuList[2] = new menu("menu 3",3000);
-		menuNum = 3;
+		//menuList[0] = new menu("menu 1",1000);
+		//menuList[1] = new menu("menu 2",2000);
+		//menuList[2] = new menu("menu 3",3000);
+		//menuNum = 3;
 		
 		//basicPanel.setLayout(new GridLayout(2,2));
 		closingPanel.setLayout(new FlowLayout());
@@ -1318,12 +1662,24 @@ public class team extends JFrame implements ActionListener{
 		  
 		  for(int i=0;i<10;i++) {
 			  delmenuButton[i] = new JButton("삭제 " + (i+1));
-			  menuDialog[i] = new JDialog();
-			  menuDialog[i].setSize(500, 100);
-			  menuDialog[i].setLayout(new FlowLayout());
-			  menuDialog[i].add(delmenuButton[i]);
 			  delmenuButton[i].addActionListener(this);
-			  menuButton[i].addActionListener(this);
+			  changemenuButton[i] = new JButton("편집 " + (i+1));
+			  changemenuButton[i].addActionListener(this);
+			  menuDialog[i] = new JDialog();
+			  menuDialog[i].setSize(450, 100);
+			  menuDialog[i].setLayout(new FlowLayout());
+			  menunametext[i] = new JTextField("이름", 8);
+			  menuprice[i] = new JLabel("가격 :");
+			  menupricetext[i] = new JTextField("가격", 8);
+			  menuorigin[i] = new JLabel("원가");
+			  menujaetext[i] = new JTextField("재료", 15);
+			  menuDialog[i].add(menunametext[i]);
+			  menuDialog[i].add(menuprice[i]);
+			  menuDialog[i].add(menupricetext[i]);
+			  menuDialog[i].add(menuorigin[i]);
+			  menuDialog[i].add(menujaetext[i]);
+			  menuDialog[i].add(delmenuButton[i]);
+			  menuDialog[i].add(changemenuButton[i]);
 		  }
 		  
 		  JButton addmenu = new JButton("메뉴추가");
@@ -1331,7 +1687,7 @@ public class team extends JFrame implements ActionListener{
 		  addmenu.addActionListener(this);
 		  
 		  addmenuDialog.setLayout(new FlowLayout());
-		  addmenuDialog.setSize(500,200);
+		  addmenuDialog.setSize(500,100);
 		  addmenuDialog.add(addmenuName);
 		  addmenuDialog.add(addmenuprice);
 		  addmenuDialog.add(addmenurecipe);
