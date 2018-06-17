@@ -261,13 +261,39 @@ public class team extends JFrame implements ActionListener{
 		if(actionCmd.equals("추가1")) {
 			
 			String s = JOptionPane.showInputDialog(null,"메뉴 추가");
-		   
+		    
 			for(int i = 0;i<menuNum;i++) {
 			   if(s.equals(menuList[i].name)) {
+				   StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+				   int recipecount = recipetoken.countTokens();
+				   for(int j = 0;j<recipecount;j++) {
+					   String smalljae = recipetoken.nextToken();
+					   for(int k = 0;k<jaeryoNum;k++) {
+						   
+						   if(smalljae.equals(jaeryoList[k][0])) {
+							   
+							   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+								   JOptionPane.showMessageDialog(this,"재료 부족");
+								   return;
+							   }
+						   }
+					   }
+				   }
+				   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+				   for(int j = 0;j<recipecount;j++) {
+					   String smalljae = recipetoken.nextToken();
+					   for(int k = 0;k<jaeryoNum;k++) {
+						   if(smalljae.equals(jaeryoList[k][0])) {
+							   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+							   
+						   }
+					   }
+				   }
 				   tableMenuList[0][tableMenuNum[0]] = menuList[i];
 				   tableMenuNum[0]++;
 				   break;
 			   }
+			   
 			}
 			
 			int t=0;
@@ -284,6 +310,31 @@ public class team extends JFrame implements ActionListener{
 			
 			for(int i = 0;i<menuNum;i++) {
 				if(s.equals(menuList[i].name)) {
+					StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   int recipecount = recipetoken.countTokens();
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   
+								   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+									   JOptionPane.showMessageDialog(this,"재료 부족");
+									   return;
+								   }
+							   }
+						   }
+					   }
+					   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+								   
+							   }
+						   }
+					   }
 					tableMenuList[1][tableMenuNum[1]] = menuList[i];
 					tableMenuNum[1]++;
 					break;
@@ -303,6 +354,31 @@ public class team extends JFrame implements ActionListener{
 			String s = JOptionPane.showInputDialog(null,"메뉴 추가");
 			for(int i = 0;i<menuNum;i++) {
 				if(s.equals(menuList[i].name)) {
+					StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   int recipecount = recipetoken.countTokens();
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   
+								   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+									   JOptionPane.showMessageDialog(this,"재료 부족");
+									   return;
+								   }
+							   }
+						   }
+					   }
+					   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+								   
+							   }
+						   }
+					   }
 					tableMenuList[2][tableMenuNum[2]] = menuList[i];
 					tableMenuNum[2]++;
 					break;
@@ -323,6 +399,31 @@ public class team extends JFrame implements ActionListener{
 		   
 			for(int i = 0;i<menuNum;i++) {
 				if(s.equals(menuList[i].name)) {
+					StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   int recipecount = recipetoken.countTokens();
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   
+								   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+									   JOptionPane.showMessageDialog(this,"재료 부족");
+									   return;
+								   }
+							   }
+						   }
+					   }
+					   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+								   
+							   }
+						   }
+					   }
 					tableMenuList[3][tableMenuNum[3]] = menuList[i];
 					tableMenuNum[3]++;
 					break;
@@ -343,6 +444,31 @@ public class team extends JFrame implements ActionListener{
 		   
 			for(int i = 0;i<menuNum;i++) {
 				if(s.equals(menuList[i].name)) {
+					StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   int recipecount = recipetoken.countTokens();
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   
+								   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+									   JOptionPane.showMessageDialog(this,"재료 부족");
+									   return;
+								   }
+							   }
+						   }
+					   }
+					   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+								   
+							   }
+						   }
+					   }
 					tableMenuList[4][tableMenuNum[4]] = menuList[i];
 					tableMenuNum[4]++;
 					break;
@@ -363,6 +489,31 @@ public class team extends JFrame implements ActionListener{
 		   
 			for(int i = 0;i<menuNum;i++) {
 				if(s.equals(menuList[i].name)) {
+					StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   int recipecount = recipetoken.countTokens();
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   
+								   if(Integer.parseInt(jaeryoList[k][1]) == 0) {
+									   JOptionPane.showMessageDialog(this,"재료 부족");
+									   return;
+								   }
+							   }
+						   }
+					   }
+					   recipetoken = new StringTokenizer(menuList[i].jae, " ");
+					   for(int j = 0;j<recipecount;j++) {
+						   String smalljae = recipetoken.nextToken();
+						   for(int k = 0;k<jaeryoNum;k++) {
+							   if(smalljae.equals(jaeryoList[k][0])) {
+								   jaeryoList[k][1] = ""+(Integer.parseInt(jaeryoList[k][1])-1);
+								   
+							   }
+						   }
+					   }
 					tableMenuList[5][tableMenuNum[5]] = menuList[i];
 					tableMenuNum[5]++;
 					break;
@@ -914,6 +1065,13 @@ public class team extends JFrame implements ActionListener{
 			}
 			balance -= totalSal;
 		}
+		int totalJaeCost = 0;
+		for(int i=0;i<jaeryoNum;i++) {
+			jaeryoList[i][1] = ""+(Integer.parseInt(jaeryoList[i][1]) + Integer.parseInt(jaeryoList[i][2]));
+			totalJaeCost += Integer.parseInt(jaeryoList[i][2]) * Integer.parseInt(jaeryoList[i][3]);
+			jaeryoList[i][2] = "0";
+		}
+		balance -= totalJaeCost;
 		revenueLabel.setText("오늘 매출: " + revenue + "원/");
 		balanceLabel.setText("전체 잔고: " + balance + "원");
 		
