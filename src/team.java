@@ -98,7 +98,7 @@ public class team extends JFrame implements ActionListener{
 	JTable memberTable;
 //-----------------메뉴관련 변수-------------------------------------------
 	
-	String[][] menuList = new String[10][4];
+	menu[] menuList = new menu[10];
 	int menuNum=0;
 	
 	JButton[] menuButton = new JButton[10];
@@ -788,15 +788,18 @@ public class team extends JFrame implements ActionListener{
 			
 			addmenuDialog.setVisible(false);
 			
-			menuList[menuNum][0] = addmenuName.getText();
-			menuList[menuNum][1] = addmenuprice.getText();
-					
-			menuList[menuNum][3] = addmenurecipe.getText();
-			StringTokenizer recipetoken = new StringTokenizer(menuList[menuNum][4], " ");
+			menuList[menuNum] = new menu();
+			
+			menuList[menuNum].setName(addmenuName.getText());
+			menuList[menuNum].setPrice(Integer.parseInt(addmenuprice.getText()));
+			
+			String totalrecipe = addmenurecipe.getText();
+			menuList[menuNum].setjae(totalrecipe);
+			StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
 			
 			int recipecount = recipetoken.countTokens();
 			
-			System.out.println(recipetoken);
+			System.out.println(totalrecipe);
 			
 			int totalmenucost = 0;
 			
@@ -810,7 +813,7 @@ public class team extends JFrame implements ActionListener{
 				}
 			}
 			
-			menuList[menuNum][3] = Integer.toString(totalmenucost);
+			menuList[menuNum].setOrigin(totalmenucost);
 			
 			menuNum++;
 		}
