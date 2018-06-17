@@ -109,6 +109,10 @@ public class team extends JFrame implements ActionListener{
 	JTextField addmenurecipe = new JTextField("재료 이름", 30);
 	
 	JButton goAddmenu = new JButton("메뉴추가하기");
+	
+	JDialog[] menuDialog = new JDialog[10];
+	
+	JButton delmenuButton[] = new JButton[10];
 
 	
 //-----------------직원관련 변수-------------------------------------------
@@ -816,6 +820,76 @@ public class team extends JFrame implements ActionListener{
 			menuList[menuNum].setOrigin(totalmenucost);
 			
 			menuNum++;
+		} if (actionCmd.equals("메뉴 1")) {
+			
+			menuDialog[0].setModal(true);
+			menuDialog[0].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 2")) {
+			
+			menuDialog[1].setModal(true);
+			menuDialog[1].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 3")) {
+			
+			menuDialog[2].setModal(true);
+			menuDialog[2].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 4")) {
+			
+			menuDialog[3].setModal(true);
+			menuDialog[3].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 5")) {
+			
+			menuDialog[4].setModal(true);
+			menuDialog[4].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 6")) {
+			
+			menuDialog[5].setModal(true);
+			menuDialog[5].setVisible(true);
+		
+		} if (actionCmd.equals("메뉴 7")) {
+			
+			menuDialog[6].setModal(true);
+			menuDialog[6].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 8")) {
+			
+			menuDialog[7].setModal(true);
+			menuDialog[7].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 9")) {
+			
+			menuDialog[8].setModal(true);
+			menuDialog[8].setVisible(true);
+			
+		} if (actionCmd.equals("메뉴 10")) {
+			
+			menuDialog[9].setModal(true);
+			menuDialog[9].setVisible(true);
+			
+		} if (actionCmd.equals("삭제 1")) {
+			
+		} if (actionCmd.equals("삭제 2")) {
+			
+		} if (actionCmd.equals("삭제 3")) {
+			
+		} if (actionCmd.equals("삭제 4")) {
+			
+		} if (actionCmd.equals("삭제 5")) {
+			
+		} if (actionCmd.equals("삭제 6")) {
+			
+		} if (actionCmd.equals("삭제 7")) {
+			
+		} if (actionCmd.equals("삭제 8")) {
+			
+		} if (actionCmd.equals("삭제 9")) {
+			
+		} if (actionCmd.equals("삭제 10")) {
+			
 		}
 		
 	}
@@ -1084,12 +1158,22 @@ public class team extends JFrame implements ActionListener{
 			  menuButton[i].addActionListener(this);
 		  }
 		  
+		  for(int i=0;i<10;i++) {
+			  delmenuButton[i] = new JButton("삭제 " + (i+1));
+			  menuDialog[i] = new JDialog();
+			  menuDialog[i].setSize(500, 100);
+			  menuDialog[i].setLayout(new FlowLayout());
+			  menuDialog[i].add(delmenuButton[i]);
+			  delmenuButton[i].addActionListener(this);
+			  menuButton[i].addActionListener(this);
+		  }
+		  
 		  JButton addmenu = new JButton("메뉴추가");
 		  menuPanel.add(addmenu,BorderLayout.SOUTH);
 		  addmenu.addActionListener(this);
 		  
 		  addmenuDialog.setLayout(new FlowLayout());
-		  addmenuDialog.setSize(500,100);
+		  addmenuDialog.setSize(500,200);
 		  addmenuDialog.add(addmenuName);
 		  addmenuDialog.add(addmenuprice);
 		  addmenuDialog.add(addmenurecipe);
