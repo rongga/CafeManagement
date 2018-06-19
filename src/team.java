@@ -838,7 +838,7 @@ public class team extends JFrame implements ActionListener{
 				}
 			}
 			
-		}if(actionCmd.equals("회원편집")){
+		}if(actionCmd.equals("회원편집") && (memberTable.getSelectedRow() < memberNum)){
 			
 			editMemNum.setText(memList[memberTable.getSelectedRow()][0]);
 			editName.setText(memList[memberTable.getSelectedRow()][2]);
@@ -901,7 +901,7 @@ public class team extends JFrame implements ActionListener{
 					break;
 				}
 			}
-		}if(actionCmd.equals("직원편집")) {
+		}if(actionCmd.equals("직원편집") && (staffTable.getSelectedRow() < staffNum)) {
 			
 			editStaffNum.setText(staffList[staffTable.getSelectedRow()][0]);
 			editNameStaff.setText(staffList[staffTable.getSelectedRow()][1]);
@@ -959,24 +959,6 @@ public class team extends JFrame implements ActionListener{
 			for(int k=0;k<6;k++)
 				jaeryoList[jaeryoNum-1][k] = null;
 			jaeryoNum--; 
-			
-		} if (actionCmd.equals("재료삭제하기") && jaeryoNum > 0) {
-			
-			deljaeryoDialog.setVisible(false);
-			
-			for(int i=0;i<jaeryoNum;i++) {
-				if (jaeryoList[i][0].equals(deljaeryoName.getText())) {
-					
-					for(int j = i;j<jaeryoNum-1;j++) {
-						for(int k=0;k<6;k++)
-							jaeryoList[j][k] = jaeryoList[j+1][k];					
-					}
-					for(int k=0;k<6;k++)
-						jaeryoList[jaeryoNum-1][k] = null;
-					jaeryoNum--;
-					break;
-				}
-			}
 			
 		} if (actionCmd.equals("주문")) {
 			
