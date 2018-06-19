@@ -1,9 +1,15 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class team extends JFrame implements ActionListener{
@@ -170,8 +176,32 @@ public class team extends JFrame implements ActionListener{
 			
 			System.exit(0);
 			
-		}
-		if(actionCmd.equals("테이블 1")) {
+		} if (actionCmd.equals("불러오기")) {
+			
+			Scanner inputStream = null;
+			
+			try {
+				inputStream = new Scanner(new FileInputStream("save.txt"));
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			if (inputStream != null) {
+				date.setYear(inputStream.nextInt());
+				date.setMonth(inputStream.nextInt());
+				date.setDate(inputStream.nextInt());
+				revenue = inputStream.nextInt();
+				balance = inputStream.nextInt();
+				
+				dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
+				revenueLabel.setText("오늘 매출: " + revenue + "원/");
+				balanceLabel.setText("전체 잔고: " + balance + "원");
+			}
+			
+			
+			
+		}if(actionCmd.equals("테이블 1")) {
 			
 			currentTable.setText(actionCmd);
 			for(int i=0;i<10;i++) {
@@ -921,10 +951,10 @@ public class team extends JFrame implements ActionListener{
 				if (jaeryoList[i][0].equals(deljaeryoName.getText())) {
 					
 					for(int j = i;j<jaeryoNum-1;j++) {
-						for(int k=1;k<4;k++)
+						for(int k=0;k<6;k++)
 							jaeryoList[j][k] = jaeryoList[j+1][k];					
 					}
-					for(int k=0;k<4;k++)
+					for(int k=0;k<6;k++)
 						jaeryoList[jaeryoNum-1][k] = null;
 					jaeryoNum--;
 					break;
@@ -1532,6 +1562,26 @@ public class team extends JFrame implements ActionListener{
 		revenueLabel.setText("오늘 매출: " + revenue + "원/");
 		balanceLabel.setText("전체 잔고: " + balance + "원");
 		
+		File file = new File("save.txt");
+        FileWriter writer = null;
+        
+        try {
+        	
+            writer = new FileWriter(file, false);
+            writer.write(date.getYear() +  " " + date.getMonth() +  " " + date.getDate() +  " " + revenue + " " + balance);
+            writer.flush();
+            
+            System.out.println("DONE");
+        } catch(IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(writer != null) writer.close();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
+		
 	}
 	public String dateToString() {
 		return (date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
@@ -1902,9 +1952,12 @@ public class team extends JFrame implements ActionListener{
 		
 		basicPanel.add(selectPanel,BorderLayout.SOUTH);
 
-		
+		JButton loadButton = new JButton("불러오기");
 		JButton exitButton = new JButton("종료");
-		exitPanel.add(exitButton);
+		exitPanel.setLayout(new BorderLayout());
+		exitPanel.add(loadButton, BorderLayout.NORTH);
+		exitPanel.add(exitButton, BorderLayout.CENTER);
+		loadButton.addActionListener(this);
 		exitButton.addActionListener(this);
 		basicPanel.add(exitPanel);
 		
