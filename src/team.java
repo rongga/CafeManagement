@@ -94,7 +94,7 @@ public class team extends JFrame implements ActionListener{
 	int memberNum = 0;
 	String[][] memList = new String[100][5];
 	JTextField memName = new JTextField("회원이름",10);
-	JTextField memGrade = new JTextField("회원등급",10);
+	//JTextField memGrade = new JTextField("회원등급",10);
 	JTextField phone = new JTextField("연락처",20);
 	JButton goAddMem = new JButton("추가하기");
 		
@@ -873,7 +873,7 @@ public class team extends JFrame implements ActionListener{
 		}if(actionCmd.equals("회원추가")) {
 			
 			memName.setText("회원이름");
-			memGrade.setText("회원등급");
+			//memGrade.setText("회원등급");
 			phone.setText("연락처");
 			addMemDialog.setModal(true);
 			addMemDialog.setVisible(true);
@@ -882,7 +882,7 @@ public class team extends JFrame implements ActionListener{
 			
 			addMemDialog.setVisible(false);
 			memList[memberNum][0] = ""+(memberNum+1);
-			memList[memberNum][1] = memGrade.getText();
+			memList[memberNum][1] = "normal";
 			memList[memberNum][2] = memName.getText();
 			memList[memberNum][3] = ""+0;
 			memList[memberNum][4] = phone.getText();
@@ -1624,6 +1624,10 @@ public class team extends JFrame implements ActionListener{
 				totalSal += Integer.parseInt(staffList[i][2]);
 			}
 			balance -= totalSal;
+			for(int i=0;i<memberNum;i++) {
+				memList[i][1] = "normal";
+				memList[i][3] = "0";
+			}
 		}
 		int totalJaeCost = 0;
 		for(int i=0;i<jaeryoNum;i++) {
@@ -1895,7 +1899,7 @@ public class team extends JFrame implements ActionListener{
 		  addMemDialog.setSize(700,100);
 		  goAddMem.addActionListener(this);
 		  addMemDialog.add(memName);
-		  addMemDialog.add(memGrade);
+		  //addMemDialog.add(memGrade);
 		  addMemDialog.add(phone);
 		  addMemDialog.add(goAddMem);
 		  
