@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -971,6 +972,13 @@ public class team extends JFrame implements ActionListener{
 			
 		}if(actionCmd.equals("직원추가하기")) {
 			
+			try {
+				Integer.parseInt(staffSal.getText());
+			} catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(this,"급여입력 오류 (올바른 숫자를 입력하세요)");
+				return;
+			}
+			
 			addStaffDialog.setVisible(false);
 			staffList[staffNum][0] = ""+(staffNum+1);
 			staffList[staffNum][1] = staffName.getText();
@@ -1057,6 +1065,12 @@ public class team extends JFrame implements ActionListener{
 			
 		} if (actionCmd.equals("재료추가하기")) {
 			
+			try {
+				Integer.parseInt(jaeryoprice.getText());
+			} catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(this,"가격입력 오류 (올바른 숫자를 입력하세요)");
+				return;
+			}
 			//if (Integer.parseInt(jaeryoprice.getText())
 			//JOptionPane.showMessageDialog(this,"마감되지 않은 테이블이 있습니다.");
 			
@@ -1118,6 +1132,36 @@ public class team extends JFrame implements ActionListener{
 			addmenuDialog.setVisible(true);
 			
 		} if (actionCmd.equals("메뉴추가하기")) {
+			
+			try {
+				Integer.parseInt(addmenuprice.getText());
+				String totalrecipe = addmenurecipe.getText();
+				StringTokenizer recipetoken = new StringTokenizer(totalrecipe, " ");
+				
+				int recipecount = recipetoken.countTokens();
+				
+				if (recipecount == 0)
+					throw new Exception();
+				
+				int count = 0;
+				
+				for(int i=0;i<recipecount;i++) {
+					String smalljae = recipetoken.nextToken();
+					for(int j=0;j<jaeryoNum;j++)
+						if (smalljae.equals(jaeryoList[j][0])) 
+							count++;
+				}
+				
+				if (count != recipecount)
+					throw new Exception();
+				
+			} catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(this,"가격입력 오류 (올바른 숫자를 입력하세요)");
+				return;
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(this,"재료입력 오류 (올바른 재료를 입력하세요)");
+				return;
+			}
 			
 			addmenuDialog.setVisible(false);
 			
