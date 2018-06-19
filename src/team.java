@@ -636,7 +636,25 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
-                    
+                		String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[0];j++) {
+                            
+                            revenue += tableMenuList[0][j].price;
+                            tableMenuList[0][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[0] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[0].setText("빈테이블");
+                        return;
+                    }
+                    	 
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     
@@ -688,6 +706,24 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
+                	String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[1];j++) {
+                            
+                            revenue += tableMenuList[1][j].price;
+                            tableMenuList[1][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[1] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[1].setText("빈테이블");
+                        return;
+                    }
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     else if(memList[i][1].equals("gold"))
@@ -732,6 +768,24 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
+                	String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[2];j++) {
+                            
+                            revenue += tableMenuList[2][j].price;
+                            tableMenuList[2][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[2] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[2].setText("빈테이블");
+                        return;
+                    }
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     else if(memList[i][1].equals("gold"))
@@ -776,6 +830,24 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
+                	String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[3];j++) {
+                            
+                            revenue += tableMenuList[3][j].price;
+                            tableMenuList[3][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[3] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[3].setText("빈테이블");
+                        return;
+                    }
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     else if(memList[i][1].equals("gold"))
@@ -820,6 +892,24 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
+                	String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[4];j++) {
+                            
+                            revenue += tableMenuList[4][j].price;
+                            tableMenuList[4][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[4] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[4].setText("빈테이블");
+                        return;
+                    }
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     else if(memList[i][1].equals("gold"))
@@ -863,6 +953,24 @@ public class team extends JFrame implements ActionListener{
             for(int i=0;i<memberNum;i++) {
                 if(s.equals(memList[i][2])) {
                     
+                	String[] answer = {"no","yes"};
+                    int ans = JOptionPane.showOptionDialog(this, "마일리지 : " + memList[i][3] + "\n사용하시겠습니까?", "마일리지 사용", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, null);
+                    if(ans == 1 && !memList[i][3].equals("0")) {
+                    	for(int j=0;j<tableMenuNum[5];j++) {
+                            
+                            revenue += tableMenuList[5][j].price;
+                            tableMenuList[5][j] = new menu();
+                            tableItem[j].setText("");
+                            tablePrice[j].setText("");
+                            
+                        }
+                    		revenue -= Integer.parseInt(memList[i][3]);
+                    		memList[i][3] = "0";
+                        tableMenuNum[5] = 0;
+                        revenueLabel.setText("오늘 매출: " + revenue + "원/");
+                        tableTotalPrice[5].setText("빈테이블");
+                        return;
+                    }
                     if(memList[i][1].equals("normal"))
                         d = 0.98;
                     else if(memList[i][1].equals("gold"))
