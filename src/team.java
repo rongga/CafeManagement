@@ -51,11 +51,21 @@ public class team extends JFrame implements ActionListener{
 	JLabel currentTable = new JLabel("선택된 테이블");
 //-----------------------재료관련 변수------------------------------
 	int jaeryoNum = 0;
-	String[][] jaeryoList = new String[100][4];
+	String[][] jaeryoList = new String[100][6];
+	JTable jaeryoTable = new JTable();
 	JTextField jaeryoName = new JTextField("이름",40);
 	JTextField jaeryoStock = new JTextField("재고",10);	
 	JTextField jaeryoorder = new JTextField("주문",10);
 	JTextField jaeryoprice = new JTextField("가격",20);
+	JTextField jaeryomarket = new JTextField("판매처",40);
+	JTextField jaeryomarketnum = new JTextField("연락처",40);
+	
+	JLabel jaenameinfoLabel = new JLabel();
+	JLabel jaepriceinfoLabel = new JLabel();
+	JLabel jaemarketinfoLabel = new JLabel();
+	JLabel jaemarketnuminfoLabel = new JLabel();
+	JLabel jaestockinfoLabel = new JLabel();
+	JLabel jaeorderinfoLabel = new JLabel();
 	
 	JDialog addjaeryoDialog = new JDialog();
 	JButton goAddjaeryo = new JButton("재료추가하기");
@@ -870,6 +880,17 @@ public class team extends JFrame implements ActionListener{
 			staffList[n][4] = editDateStaff.getText();
 			editStaffDialog.setVisible(false);
 			
+		} if (actionCmd.equals("재료정보")) {
+			
+			if (jaeryoTable.getSelectedRow() < jaeryoNum) {
+				jaenameinfoLabel.setText("이름 : " + jaeryoList[jaeryoTable.getSelectedRow()][0]);
+				jaepriceinfoLabel.setText("가격 : " + jaeryoList[jaeryoTable.getSelectedRow()][3]);
+				jaemarketinfoLabel.setText("판매처 : " + jaeryoList[jaeryoTable.getSelectedRow()][4]);
+				jaemarketnuminfoLabel.setText("연락처 : " + jaeryoList[jaeryoTable.getSelectedRow()][5]);
+				jaestockinfoLabel.setText("수량 : " + jaeryoList[jaeryoTable.getSelectedRow()][1]);
+				jaeorderinfoLabel.setText("주문량 : " + jaeryoList[jaeryoTable.getSelectedRow()][2]);
+			}
+			
 		} if (actionCmd.equals("재료추가")) {
 			
 			addjaeryoDialog.setModal(true);
@@ -882,6 +903,8 @@ public class team extends JFrame implements ActionListener{
 			jaeryoList[jaeryoNum][1] = ""+0;
 			jaeryoList[jaeryoNum][2] = ""+0;
 			jaeryoList[jaeryoNum][3] = jaeryoprice.getText();
+			jaeryoList[jaeryoNum][4] = jaeryomarket.getText();
+			jaeryoList[jaeryoNum][5] = jaeryomarketnum.getText();
 			
 			jaeryoNum++;
 			
@@ -1607,7 +1630,7 @@ public class team extends JFrame implements ActionListener{
 		  JPanel warePanel = new JPanel();
 		  selectPanel.addTab("창고", warePanel);
 		  String[] wareheader = {"이름", "재고", "주문", "가격"};           //테이블 만들기
-		  JTable jaeryoTable = new JTable(jaeryoList, wareheader);
+		  jaeryoTable = new JTable(jaeryoList, wareheader);
 		  jaeryoTable.getColumn("이름").setPreferredWidth(40);				//너비설정
 		  jaeryoTable.getColumn("재고").setPreferredWidth(10);
 		  jaeryoTable.getColumn("주문").setPreferredWidth(10);
@@ -1618,9 +1641,11 @@ public class team extends JFrame implements ActionListener{
 		  addjaeryo.addActionListener(this);
 		  
 		  addjaeryoDialog.setLayout(new FlowLayout());
-		  addjaeryoDialog.setSize(500,100);
+		  addjaeryoDialog.setSize(500,200);
 		  addjaeryoDialog.add(jaeryoName);
 		  addjaeryoDialog.add(jaeryoprice);
+		  addjaeryoDialog.add(jaeryomarket);
+		  addjaeryoDialog.add(jaeryomarketnum);
 		  addjaeryoDialog.add(goAddjaeryo);
 		  
 		  goAddjaeryo.addActionListener(this);
@@ -1655,12 +1680,35 @@ public class team extends JFrame implements ActionListener{
 		  jaeryoordercancelDialog.add(gojaeryoordercancel);
 		  gojaeryoordercancel.addActionListener(this);
 		  
+		  JButton jaeinfoButton = new JButton("재료정보");
+		  jaeinfoButton.addActionListener(this);
+		  
 		  JPanel right = new JPanel();
 		  right.setLayout(new BorderLayout());
 		  
+		  JPanel infoPanel = new JPanel();
+		  infoPanel.setLayout(new BorderLayout());
+		  
+		  JPanel infonamePanel = new JPanel();
+		  infonamePanel.setLayout(new GridLayout(2,1));
+		  JPanel infomarketPanel = new JPanel();
+		  infomarketPanel.setLayout(new GridLayout(2,2));
+		  JPanel infoButtonPanel = new JPanel();
+		  
+		  infoPanel.add(infonamePanel, BorderLayout.NORTH);
+		  infoPanel.add(infomarketPanel, BorderLayout.CENTER);
+		  infoPanel.add(infoButtonPanel, BorderLayout.SOUTH);
+		  
+		  infonamePanel.add(jaenameinfoLabel);
+		  infonamePanel.add(jaepriceinfoLabel);
+		  infomarketPanel.add(jaemarketinfoLabel);
+		  infomarketPanel.add(jaemarketnuminfoLabel);
+		  infomarketPanel.add(jaestockinfoLabel);
+		  infomarketPanel.add(jaeorderinfoLabel);
+		  infoButtonPanel.add(jaeinfoButton);
+		  
 		  JPanel centerPanel = new JPanel();
 		  
-		  //centerPanel.add(재료정보);
 		  centerPanel.add(getorder);
 		  centerPanel.add(cancelorder);
 		  
@@ -1669,6 +1717,7 @@ public class team extends JFrame implements ActionListener{
 		  bottomPanel.add(addjaeryo);
 		  bottomPanel.add(deljaeryo);
 		  
+		  right.add(infoPanel, BorderLayout.NORTH);
 		  right.add(centerPanel, BorderLayout.CENTER);
 		  right.add(bottomPanel, BorderLayout.SOUTH);
 		  
