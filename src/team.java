@@ -950,10 +950,15 @@ public class team extends JFrame implements ActionListener{
 			
 			jaeryoNum++;
 			
-		} if (actionCmd.equals("재료삭제")) {
+		} if (actionCmd.equals("재료삭제") && (jaeryoTable.getSelectedRow() < jaeryoNum)) {
 			
-			deljaeryoDialog.setModal(true);
-			deljaeryoDialog.setVisible(true);
+			for(int i = jaeryoTable.getSelectedRow();i<jaeryoNum-1;i++) {
+				for(int k=0;k<6;k++)
+					jaeryoList[i][k] = jaeryoList[i+1][k];					
+			}
+			for(int k=0;k<6;k++)
+				jaeryoList[jaeryoNum-1][k] = null;
+			jaeryoNum--; 
 			
 		} if (actionCmd.equals("재료삭제하기") && jaeryoNum > 0) {
 			
