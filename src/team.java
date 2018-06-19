@@ -114,7 +114,7 @@ public class team extends JFrame implements ActionListener{
 	JTable memberTable;
 //-----------------메뉴관련 변수-------------------------------------------
 	
-	static menu[] menuList = new menu[10];
+	menu[] menuList = new menu[10];
 	int menuNum=0;
 	
 	JButton[] menuButton = new JButton[10];
@@ -203,10 +203,21 @@ public class team extends JFrame implements ActionListener{
 				
 				loopNum = inputStream.nextInt();
 				for(int i=0;i<loopNum;i++) {
-	            		menuList[loopNum].name = inputStream.next();
-	            		menuButton[loopNum].setText(menuList[loopNum].name);
-	            		menuList[loopNum].price = inputStream.nextInt();
-	            		menuList[loopNum].origin = inputStream.nextInt();
+					//menuList[i] = new menu(inputStream.next(),inputStream.nextInt());
+					int namecount = inputStream.nextInt();
+            			String[] loadname = new String[10];
+            			for(int j=0;j<namecount;j++) {
+            				loadname[j] = inputStream.next();
+            			}
+            			String loadjaename = null;
+            			loadjaename = loadname[0];
+            			for(int j=1;j<namecount;j++) {
+            				loadjaename = loadjaename + " " +loadname[j];
+            			}
+	            		menuList[i].name = loadjaename;
+	            		menuButton[i].setText(menuList[i].name);
+	            		menuList[i].price = inputStream.nextInt();
+	            		menuList[i].origin = inputStream.nextInt();
 	            		int jaecount = inputStream.nextInt();
 	            		String[] loadjaeryo = new String[10];
 	            		for(int j=0;j<jaecount;j++) {
@@ -217,6 +228,7 @@ public class team extends JFrame implements ActionListener{
 	            		for(int j=1;j<jaecount;j++) {
 	            			loadjae = loadjae + " " +loadjaeryo[j];
 	            		}
+	            		menuList[i].jae = loadjae;
 	            }
 				
 				loopNum = inputStream.nextInt();
@@ -1685,15 +1697,16 @@ public class team extends JFrame implements ActionListener{
             }
             
             writer.write(menuNum + " ");
-            System.out.println(menuNum + " : " + menuList[menuNum].name);
             
             for(int i=0;i<menuNum;i++) {
-            		writer.write(menuList[menuNum].name);
-            		writer.write(menuList[menuNum].price);
-            		writer.write(menuList[menuNum].origin);
-            		StringTokenizer recipetoken = new StringTokenizer(menuList[menuNum].jae, " ");
-            		writer.write(recipetoken.countTokens());
-            		writer.write(menuList[menuNum].jae);
+            		StringTokenizer nametoken = new StringTokenizer(menuList[i].name, " ");
+            		writer.write(nametoken.countTokens() + " ");
+            		writer.write(menuList[i].name + " ");
+            		writer.write(menuList[i].price + " ");
+            		writer.write(menuList[i].origin + " ");
+            		StringTokenizer recipetoken = new StringTokenizer(menuList[i].jae, " ");
+            		writer.write(recipetoken.countTokens() + " ");
+            		writer.write(menuList[i].jae + " ");
             		writer.flush();
             }
             
