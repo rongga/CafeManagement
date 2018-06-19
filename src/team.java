@@ -209,9 +209,13 @@ public class team extends JFrame implements ActionListener{
 				
 				loopNum = inputStream.nextInt();
 				for(int i=0;i<loopNum;i++) {
-	            		for(int j=0;j<6;j++) {
+	            		for(int j=0;j<4;j++) {
 	            			staffList[i][j] = inputStream.next();
 	            		}
+	            		String firstDate = null;
+	            		firstDate = inputStream.next() + " " + inputStream.next() + " " + inputStream.next();
+	            		staffList[i][4] = firstDate;
+	            		staffList[i][5] = inputStream.next();
 	            }
 				
 				dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
