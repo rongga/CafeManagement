@@ -597,215 +597,278 @@ public class team extends JFrame implements ActionListener{
 		   }
 		   tableTotalPrice[5].setText(""+t);
 		   
-		}if(actionCmd.equals("결제1")) {
-		
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[0];i++) 
-				tp += tableMenuList[0][i].price;
-			
-			
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal")) 
-						d = 0.98;
-					
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-					
-				}
-			}
-			
-			for(int i=0;i<tableMenuNum[0];i++) {
-				
-				revenue += tableMenuList[0][i].price * d;
-				tableMenuList[0][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-				
-			}
-			tableMenuNum[0] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[0].setText("빈테이블");
-			
-		}if(actionCmd.equals("결제2")) {
-			
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[1];i++) 
-				tp += tableMenuList[1][i].price;
-			
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal"))
-						d = 0.98;
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-				}
-			}
-			for(int i=0;i<tableMenuNum[1];i++) {
-				revenue += tableMenuList[1][i].price * d;
-				tableMenuList[1][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-			}
-			tableMenuNum[1] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[1].setText("빈테이블");
-			
-		}if(actionCmd.equals("결제3")) {
-			
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[2];i++) 
-				tp += tableMenuList[2][i].price;
-			
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal"))
-						d = 0.98;
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-				}
-			}
-			for(int i=0;i<tableMenuNum[2];i++) {
-				revenue += tableMenuList[2][i].price * d;
-				tableMenuList[2][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-			}
-			tableMenuNum[2] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[2].setText("빈테이블");
-			
-		}if(actionCmd.equals("결제4")) {
-			
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[3];i++) 
-				tp += tableMenuList[3][i].price;
-			
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal"))
-						d = 0.98;
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-				}
-			}
-			for(int i=0;i<tableMenuNum[3];i++) {
-				revenue += tableMenuList[3][i].price * d;
-				tableMenuList[3][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-			}
-			tableMenuNum[3] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[3].setText("빈테이블");
-			
-		}if(actionCmd.equals("결제5")) {
-			
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[4];i++) 
-				tp += tableMenuList[4][i].price;
-			
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal"))
-						d = 0.98;
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-				}
-			}
-			for(int i=0;i<tableMenuNum[4];i++) {
-				revenue += tableMenuList[4][i].price * d;
-				tableMenuList[4][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-			}
-			tableMenuNum[4] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[4].setText("빈테이블");
-			
-		}if(actionCmd.equals("결제6")) {
-			
-			double d = 1;
-			String s = gradeAtBill.getText();
-			gradeAtBill.setText("회원이름");
-			int tp = 0;
-			for(int i=0;i<tableMenuNum[5];i++) {
-				tp += tableMenuList[5][i].price;
-			}
-			for(int i=0;i<memberNum;i++) {
-				if(s.equals(memList[i][2])) {
-					int cp = Integer.parseInt(memList[i][3]);
-					cp += tp*0.02;
-					memList[i][3] = ""+cp;
-					if(memList[i][1].equals("normal"))
-						d = 0.98;
-					else if(memList[i][1].equals("gold"))
-						d = 0.95;
-					else if(memList[i][1].equals("platinum"))
-						d = 0.9;
-					break;
-				}
-			}
-			for(int i=0;i<tableMenuNum[5];i++) {
-				revenue += tableMenuList[5][i].price * d;
-				tableMenuList[5][i] = new menu();
-				tableItem[i].setText("");
-				tablePrice[i].setText("");
-			}
-			tableMenuNum[5] = 0;
-			revenueLabel.setText("오늘 매출: " + revenue + "원/");
-			tableTotalPrice[5].setText("빈테이블");
+        }if(actionCmd.equals("결제1")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[0];i++)
+                tp += tableMenuList[0][i].price;
+            
+            
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    
+                    break;
+                    
+                }
+            }
+            
+            
+            for(int i=0;i<tableMenuNum[0];i++) {
+                
+                revenue += tableMenuList[0][i].price * d;
+                tableMenuList[0][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+                
+            }
+            tableMenuNum[0] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[0].setText("빈테이블");
+            
+        }if(actionCmd.equals("결제2")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[1];i++)
+                tp += tableMenuList[1][i].price;
+            
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    break;
+                }
+            }
+            for(int i=0;i<tableMenuNum[1];i++) {
+                revenue += tableMenuList[1][i].price * d;
+                tableMenuList[1][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+            }
+            tableMenuNum[1] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[1].setText("빈테이블");
+            
+        }if(actionCmd.equals("결제3")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[2];i++)
+                tp += tableMenuList[2][i].price;
+            
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    break;
+                }
+            }
+            for(int i=0;i<tableMenuNum[2];i++) {
+                revenue += tableMenuList[2][i].price * d;
+                tableMenuList[2][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+            }
+            tableMenuNum[2] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[2].setText("빈테이블");
+            
+        }if(actionCmd.equals("결제4")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[3];i++)
+                tp += tableMenuList[3][i].price;
+            
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    break;
+                }
+            }
+            for(int i=0;i<tableMenuNum[3];i++) {
+                revenue += tableMenuList[3][i].price * d;
+                tableMenuList[3][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+            }
+            tableMenuNum[3] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[3].setText("빈테이블");
+            
+        }if(actionCmd.equals("결제5")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[4];i++)
+                tp += tableMenuList[4][i].price;
+            
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    break;
+                }
+            }
+            for(int i=0;i<tableMenuNum[4];i++) {
+                revenue += tableMenuList[4][i].price * d;
+                tableMenuList[4][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+            }
+            tableMenuNum[4] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[4].setText("빈테이블");
+            
+        }if(actionCmd.equals("결제6")) {
+            
+            double d = 1;
+            String s = gradeAtBill.getText();
+            gradeAtBill.setText("회원이름");
+            int tp = 0;
+            for(int i=0;i<tableMenuNum[5];i++) {
+                tp += tableMenuList[5][i].price;
+            }
+            for(int i=0;i<memberNum;i++) {
+                if(s.equals(memList[i][2])) {
+                    
+                    if(memList[i][1].equals("normal"))
+                        d = 0.98;
+                    else if(memList[i][1].equals("gold"))
+                        d = 0.95;
+                    else if(memList[i][1].equals("platinum"))
+                        d = 0.9;
+                    
+                    int cp = Integer.parseInt(memList[i][3]);
+                    cp += tp*0.02;
+                    
+                    if(cp <= 500)
+                        memList[i][1] = "normal";
+                    else if(cp <= 1000)
+                        memList[i][1] = "gold";
+                    else
+                        memList[i][1] = "platinum";
+                    
+                    memList[i][3] = ""+cp;
+                    break;
+                }
+            }
+            for(int i=0;i<tableMenuNum[5];i++) {
+                revenue += tableMenuList[5][i].price * d;
+                tableMenuList[5][i] = new menu();
+                tableItem[i].setText("");
+                tablePrice[i].setText("");
+            }
+            tableMenuNum[5] = 0;
+            revenueLabel.setText("오늘 매출: " + revenue + "원/");
+            tableTotalPrice[5].setText("빈테이블");
+
 			
 		}if(actionCmd.equals("회원추가")) {
 			
