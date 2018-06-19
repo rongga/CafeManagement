@@ -187,22 +187,22 @@ public class team extends JFrame implements ActionListener{
 				date.setDate(inputStream.nextInt());
 				balance = inputStream.nextInt();
 				
-				int loopNum = inputStream.nextInt();
-				for(int i=0;i<loopNum;i++) {
+				jaeryoNum = inputStream.nextInt();
+				for(int i=0;i<jaeryoNum;i++) {
 	            		for(int j=0;j<6;j++) {
 	            			jaeryoList[i][j] = inputStream.next();
 	            		}
 	            }
 				
-				loopNum = inputStream.nextInt();
-				for(int i=0;i<loopNum;i++) {
+				memberNum = inputStream.nextInt();
+				for(int i=0;i<memberNum;i++) {
 	            		for(int j=0;j<5;j++) {
 	            			memList[i][j] = inputStream.next();
 	            		}
 	            }
 				
-				loopNum = inputStream.nextInt();
-				for(int i=0;i<loopNum;i++) {
+				menuNum = inputStream.nextInt();
+				for(int i=0;i<menuNum;i++) {
 					//menuList[i] = new menu(inputStream.next(),inputStream.nextInt());
 					int namecount = inputStream.nextInt();
             			String[] loadname = new String[10];
@@ -231,8 +231,8 @@ public class team extends JFrame implements ActionListener{
 	            		menuList[i].jae = loadjae;
 	            }
 				
-				loopNum = inputStream.nextInt();
-				for(int i=0;i<loopNum;i++) {
+				staffNum = inputStream.nextInt();
+				for(int i=0;i<staffNum;i++) {
 	            		for(int j=0;j<4;j++) {
 	            			staffList[i][j] = inputStream.next();
 	            		}
