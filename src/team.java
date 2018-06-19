@@ -838,7 +838,7 @@ public class team extends JFrame implements ActionListener{
 				}
 			}
 			
-		}if(actionCmd.equals("회원편집") && (memberTable.getSelectedRow() < memberNum)){
+		}if(actionCmd.equals("회원편집") && (memberTable.getSelectedRow() != -1) && (memberTable.getSelectedRow() < memberNum)){
 			
 			editMemNum.setText(memList[memberTable.getSelectedRow()][0]);
 			editName.setText(memList[memberTable.getSelectedRow()][2]);
@@ -901,7 +901,7 @@ public class team extends JFrame implements ActionListener{
 					break;
 				}
 			}
-		}if(actionCmd.equals("직원편집") && (staffTable.getSelectedRow() < staffNum)) {
+		}if(actionCmd.equals("직원편집") && (staffTable.getSelectedRow() != -1) && (staffTable.getSelectedRow() < staffNum)) {
 			
 			editStaffNum.setText(staffList[staffTable.getSelectedRow()][0]);
 			editNameStaff.setText(staffList[staffTable.getSelectedRow()][1]);
@@ -950,7 +950,7 @@ public class team extends JFrame implements ActionListener{
 			
 			jaeryoNum++;
 			
-		} if (actionCmd.equals("재료삭제") && (jaeryoTable.getSelectedRow() < jaeryoNum)) {
+		} if (actionCmd.equals("재료삭제") && (jaeryoTable.getSelectedRow() != -1) && (jaeryoTable.getSelectedRow() < jaeryoNum)) {
 			
 			for(int i = jaeryoTable.getSelectedRow();i<jaeryoNum-1;i++) {
 				for(int k=0;k<6;k++)
