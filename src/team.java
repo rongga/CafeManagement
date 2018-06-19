@@ -191,11 +191,23 @@ public class team extends JFrame implements ActionListener{
 				date.setYear(inputStream.nextInt());
 				date.setMonth(inputStream.nextInt());
 				date.setDate(inputStream.nextInt());
-				revenue = inputStream.nextInt();
 				balance = inputStream.nextInt();
 				
+				int loopNum = inputStream.nextInt();
+				for(int i=0;i<loopNum;i++) {
+	            		for(int j=0;j<6;j++) {
+	            			jaeryoList[i][j] = inputStream.next();
+	            		}
+	            }
+				
+				loopNum = inputStream.nextInt();
+				for(int i=0;i<loopNum;i++) {
+	            		for(int j=0;j<5;j++) {
+	            			memList[i][j] = inputStream.next();
+	            		}
+	            }
+				
 				dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
-				revenueLabel.setText("오늘 매출: " + revenue + "원/");
 				balanceLabel.setText("전체 잔고: " + balance + "원");
 			}
 			
@@ -1568,8 +1580,26 @@ public class team extends JFrame implements ActionListener{
         try {
         	
             writer = new FileWriter(file, false);
-            writer.write(date.getYear() +  " " + date.getMonth() +  " " + date.getDate() +  " " + revenue + " " + balance);
+            writer.write(date.getYear() +  " " + date.getMonth() +  " " + date.getDate() +  " " + balance + " ");
             writer.flush();
+            
+            writer.write(jaeryoNum + " ");
+            
+            for(int i=0;i<jaeryoNum;i++) {
+            		for(int j=0;j<6;j++) {
+            			writer.write(jaeryoList[i][j] + " ");
+            		}
+            		writer.flush();
+            }
+            
+            writer.write(memberNum + " ");
+            
+            for(int i=0;i<memberNum;i++) {
+        		for(int j=0;j<5;j++) {
+        			writer.write(memList[i][j] + " ");
+        		}
+        		writer.flush();
+        }
             
             System.out.println("DONE");
         } catch(IOException e) {
