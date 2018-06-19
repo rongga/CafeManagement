@@ -913,10 +913,15 @@ public class team extends JFrame implements ActionListener{
 			
 			memberNum++;
 			
-		}if(actionCmd.equals("회원삭제") && memberNum > 0) {
+		}if(actionCmd.equals("회원삭제") && (memberTable.getSelectedRow() != -1) && (memberTable.getSelectedRow() < memberNum)) {
 			
-			delMemDialog.setModal(true);
-			delMemDialog.setVisible(true);
+			for(int i = memberTable.getSelectedRow();i<memberNum-1;i++) {
+				for(int k=1;k<5;k++)
+					memList[i][k] = memList[i+1][k];					
+			}
+			for(int k=0;k<5;k++)
+				memList[memberNum-1][k] = null;
+			memberNum--;
 			
 		}if(actionCmd.equals("삭제하기")) {
 			
@@ -976,11 +981,25 @@ public class team extends JFrame implements ActionListener{
 			
 			
 			staffNum++;
-		}if(actionCmd.equals("직원삭제") && staffNum > 0) {
+		}if(actionCmd.equals("직원삭제") && (staffTable.getSelectedRow() != -1) && (staffTable.getSelectedRow() < staffNum)) {
 		
-			delName.setText("삭제할 이름");
-			delStaffDialog.setModal(true);
-			delStaffDialog.setVisible(true);
+			
+			for(int i = staffTable.getSelectedRow();i<staffNum-1;i++) {
+				for(int k=1;k<6;k++)
+					staffList[i][k] = staffList[i+1][k];					
+			}
+			for(int k=0;k<6;k++)
+				staffList[staffNum-1][k] = null;
+			staffNum--;
+				
+					
+//					for(int j = i;j<staffNum-1;j++) {
+//						for(int k=1;k<6;k++)
+//							staffList[j][k] = staffList[j+1][k];					
+//					}
+//					for(int k=0;k<6;k++)
+//						staffList[staffNum-1][k] = null;
+//					staffNum--;
 			
 		}if(actionCmd.equals("직원삭제하기")) {
 			
@@ -1037,6 +1056,9 @@ public class team extends JFrame implements ActionListener{
 			addjaeryoDialog.setVisible(true);
 			
 		} if (actionCmd.equals("재료추가하기")) {
+			
+			//if (Integer.parseInt(jaeryoprice.getText())
+			//JOptionPane.showMessageDialog(this,"마감되지 않은 테이블이 있습니다.");
 			
 			addjaeryoDialog.setVisible(false);
 			jaeryoList[jaeryoNum][0] = jaeryoName.getText();
