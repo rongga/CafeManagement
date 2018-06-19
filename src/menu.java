@@ -41,7 +41,13 @@ public class menu{
 		this.origin = origin;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	public String getjae(int count) {
 		return jae;
 	}
+	
+	
 }
