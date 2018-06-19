@@ -207,6 +207,13 @@ public class team extends JFrame implements ActionListener{
 	            		}
 	            }
 				
+				loopNum = inputStream.nextInt();
+				for(int i=0;i<loopNum;i++) {
+	            		for(int j=0;j<6;j++) {
+	            			staffList[i][j] = inputStream.next();
+	            		}
+	            }
+				
 				dateLabel.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDate() + "일");
 				balanceLabel.setText("전체 잔고: " + balance + "원");
 			}
@@ -1582,11 +1589,20 @@ public class team extends JFrame implements ActionListener{
             writer.write(memberNum + " ");
             
             for(int i=0;i<memberNum;i++) {
-        		for(int j=0;j<5;j++) {
+        			for(int j=0;j<5;j++) {
         			writer.write(memList[i][j] + " ");
-        		}
+        			}
         		writer.flush();
-        }
+            }
+            
+            writer.write(staffNum + " ");
+            
+            for(int i=0;i<staffNum;i++) {
+            		for(int j=0;j<6;j++) {
+            			writer.write(staffList[i][j] + " ");
+            		}
+            		writer.flush();
+            }
             
             System.out.println("DONE");
         } catch(IOException e) {
