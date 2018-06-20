@@ -20,7 +20,8 @@ public class team extends JFrame implements ActionListener{
 	
 
 	int c = 0;
-	Date date = new Date(2018,1,1);
+	static Date today = new Date();
+	static Date date = new Date(2018,1,1);
 	private int revenue = 0;
 	private int balance = 0;
 	
@@ -2287,6 +2288,11 @@ public class team extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
+		
+		date.setYear(today.getYear()+1900);
+		date.setMonth(today.getMonth()+1);
+		date.setDate(today.getDate());
+		
 		team frame = new team();
 		frame.setVisible(true);
 		
